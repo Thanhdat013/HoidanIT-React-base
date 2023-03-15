@@ -1,10 +1,10 @@
 import Header from "./components/Header/Header";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import "./App.scss";
 const App = () => {
   return (
-    <div className="App-container">
+    <div className="app-container">
       <div className="header-container">
         <Header />
       </div>
