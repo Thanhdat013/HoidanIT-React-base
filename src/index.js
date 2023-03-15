@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./redux/store";
 import Users from "./components/Users/Users";
 import Admin from "./components/Admin/Admin";
+import HomePage from "./components/Home/HomePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+
           <Route path="/users" element={<Users />} />
           <Route path="/admin" element={<Admin />} />
         </Route>
