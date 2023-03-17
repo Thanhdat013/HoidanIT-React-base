@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 import { CreateNewUser } from "~/services/ApiServices";
 
-function AddNewUser() {
+function AddNewUser({ fetchListUsers }) {
   const [show, setShow] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -66,6 +66,7 @@ function AddNewUser() {
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
+      await fetchListUsers();
     }
 
     if (data && data.EC !== 0) {
