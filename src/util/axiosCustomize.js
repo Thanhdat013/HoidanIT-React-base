@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const instance = axios.create({
+const getAxios = axios.create({
   baseURL: "http://localhost:8081/api/",
 });
 
@@ -16,7 +16,7 @@ axios.interceptors.request.use(
 );
 
 // Add a response interceptor
-axios.interceptors.response.use(
+getAxios.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -31,4 +31,4 @@ axios.interceptors.response.use(
   }
 );
 
-export default instance;
+export default getAxios;

@@ -1,6 +1,7 @@
 import AddNewUser from "./AddNewUser";
 
 import "./AddNewUser.scss";
+import TableUser from "./TableUser";
 
 function ManageUser() {
   return (
@@ -10,7 +11,9 @@ function ManageUser() {
       <div>
         <AddNewUser />
       </div>
-      <div className="user-table">Table user</div>
+      <div className="user-table">
+        <TableUser />
+      </div>
     </div>
   );
 }

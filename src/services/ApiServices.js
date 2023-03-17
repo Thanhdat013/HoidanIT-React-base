@@ -1,4 +1,4 @@
-import axios from "~/util/axiosCustomize";
+import getAxios from "~/util/axiosCustomize";
 
 export const CreateNewUser = (email, password, userName, role, avatar) => {
   // Call API submit data
@@ -9,5 +9,9 @@ export const CreateNewUser = (email, password, userName, role, avatar) => {
   data.append("role", role);
   data.append("userImage", avatar);
 
-  return axios.post("v1/participant", data);
+  return getAxios.post("v1/participant", data);
+};
+
+export const getAllUser = () => {
+  return getAxios.get("v1/participant/all");
 };
