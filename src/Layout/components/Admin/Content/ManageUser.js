@@ -10,7 +10,7 @@ function ManageUser() {
       <div>
         <AddNewUser />
       </div>
-      <div>Table user</div>
+      <div className="user-table">Table user</div>
     </div>
   );
 }

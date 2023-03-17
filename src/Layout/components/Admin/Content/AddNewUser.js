@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import axios from "axios";
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 import { FcPlus } from "react-icons/fc";
+
+import { toast } from "react-toastify";
 
 function AddNewUser() {
   const [show, setShow] = useState(false);
@@ -24,8 +28,59 @@ function AddNewUser() {
     }
   };
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setEmail("");
+    setPassword("");
+    setUserName("");
+    setRole("USER");
+    setAvatar("");
+    setPreviewAvatar("");
+  };
   const handleShow = () => setShow(true);
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const handleSubmitCreateUser = async () => {
+    // Validate
+    const isValidEmail = validateEmail(email);
+    if (!isValidEmail) {
+      toast.error("Invalid email");
+      return;
+    }
+    if (!password) {
+      toast.error("Invalid password");
+      return;
+    }
+
+    // Call API submit data
+    const data = new FormData();
+    data.append("email", email);
+    data.append("password", password);
+    data.append("username", userName);
+    data.append("role", role);
+    data.append("userImage", avatar);
+
+    let res = await axios.post(
+      "http://localhost:8081/api/v1/participant",
+      data
+    );
+
+    if (res.data && res.data.EC === 0) {
+      toast.success(res.data.EM);
+      handleClose();
+    }
+
+    if (res.data && res.data.EC !== 0) {
+      toast.error(res.data.EM);
+    }
+  };
 
   return (
     <>
@@ -108,7 +163,7 @@ function AddNewUser() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
             Save
           </Button>
         </Modal.Footer>
