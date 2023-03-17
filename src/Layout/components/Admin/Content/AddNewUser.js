@@ -8,6 +8,8 @@ import { FcPlus } from "react-icons/fc";
 
 import { toast } from "react-toastify";
 
+import { CreateNewUser } from "~/services/ApiServices";
+
 function AddNewUser() {
   const [show, setShow] = useState(false);
 
@@ -59,26 +61,15 @@ function AddNewUser() {
       return;
     }
 
-    // Call API submit data
-    const data = new FormData();
-    data.append("email", email);
-    data.append("password", password);
-    data.append("username", userName);
-    data.append("role", role);
-    data.append("userImage", avatar);
+    let data = await CreateNewUser(email, password, userName, role, avatar);
 
-    let res = await axios.post(
-      "http://localhost:8081/api/v1/participant",
-      data
-    );
-
-    if (res.data && res.data.EC === 0) {
-      toast.success(res.data.EM);
+    if (data && data.EC === 0) {
+      toast.success(data.EM);
       handleClose();
     }
 
-    if (res.data && res.data.EC !== 0) {
-      toast.error(res.data.EM);
+    if (data && data.EC !== 0) {
+      toast.error(data.EM);
     }
   };
 
