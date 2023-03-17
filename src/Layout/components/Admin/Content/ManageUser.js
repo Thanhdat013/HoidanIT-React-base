@@ -1,5 +1,7 @@
 import AddNewUser from "./AddNewUser";
 
+import "./AddNewUser.scss";
+
 function ManageUser() {
   return (
     <div className="manage-user-container">
