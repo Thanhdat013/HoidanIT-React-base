@@ -16,6 +16,10 @@ export const getAllUser = () => {
   return getAxios.get("v1/participant/all");
 };
 
+export const getUserWithPaginate = (page, limit) => {
+  return getAxios.get(`v1/participant?page=${page}&limit=${limit}`);
+};
+
 export const putUpdateUser = (id, userName, role, avatar) => {
   const dataUpdate = new FormData();
   dataUpdate.append("id", id);
