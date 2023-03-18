@@ -1,4 +1,4 @@
-const TableUser = ({ listUser, handleClickUpdate }) => {
+const TableUser = ({ listUser, handleClickUpdate, handleClickViewDetail }) => {
   return (
     <>
       <table className="table table-hover table-bordered">
@@ -21,7 +21,12 @@ const TableUser = ({ listUser, handleClickUpdate }) => {
                 <td>{item.email}</td>
                 <td>{item.role}</td>
                 <td>
-                  <button className="btn btn-secondary">View</button>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleClickViewDetail(item)}
+                  >
+                    View
+                  </button>
                   <button
                     onClick={() => handleClickUpdate(item)}
                     className="btn btn-warning mx-3"

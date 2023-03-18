@@ -2,15 +2,17 @@ import AddNewUser from "./AddNewUser";
 
 import { useState, useEffect } from "react";
 
-import { getAllUser, putUpdateUser } from "~/services/ApiServices";
+import { getAllUser } from "~/services/ApiServices";
 
 import "./AddNewUser.scss";
 import TableUser from "./TableUser";
 import UpdateUser from "./UpdateUser";
+import ViewDetailUser from "./ViewDetailUser";
 
 function ManageUser() {
   const [listUser, setListUser] = useState([]);
   const [showListUpdateUser, setShowListUpdateUser] = useState(false);
+  const [showViewDetailUser, setShowViewDetailUser] = useState(false);
 
   const [dataUpdateUser, setDataUpdateUser] = useState({});
 
@@ -29,6 +31,10 @@ function ManageUser() {
     setShowListUpdateUser(true);
     setDataUpdateUser(user);
   };
+  const handleClickViewDetail = (user) => {
+    setShowViewDetailUser(true);
+    setDataUpdateUser(user);
+  };
 
   return (
     <div className="manage-user-container">
@@ -38,12 +44,23 @@ function ManageUser() {
         <AddNewUser fetchListUsers={fetchListUsers} />
       </div>
       <div className="user-table">
-        <TableUser listUser={listUser} handleClickUpdate={handleClickUpdate} />
+        <TableUser
+          listUser={listUser}
+          handleClickUpdate={handleClickUpdate}
+          handleClickViewDetail={handleClickViewDetail}
+        />
       </div>
       <UpdateUser
         show={showListUpdateUser}
         setShow={setShowListUpdateUser}
         fetchListUsers={fetchListUsers}
+        dataUpdateUser={dataUpdateUser}
+        setDataUpdateUser={setDataUpdateUser}
+      />
+
+      <ViewDetailUser
+        show={showViewDetailUser}
+        setShow={setShowViewDetailUser}
         dataUpdateUser={dataUpdateUser}
         setDataUpdateUser={setDataUpdateUser}
       />
