@@ -2,7 +2,7 @@ import AddNewUser from "./AddNewUser";
 
 import { useState, useEffect } from "react";
 
-import { getAllUser } from "~/services/ApiServices";
+import { getAllUser, putUpdateUser } from "~/services/ApiServices";
 
 import "./AddNewUser.scss";
 import TableUser from "./TableUser";
@@ -43,7 +43,9 @@ function ManageUser() {
       <UpdateUser
         show={showListUpdateUser}
         setShow={setShowListUpdateUser}
+        fetchListUsers={fetchListUsers}
         dataUpdateUser={dataUpdateUser}
+        setDataUpdateUser={setDataUpdateUser}
       />
     </div>
   );

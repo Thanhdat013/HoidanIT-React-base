@@ -7,11 +7,17 @@ import { FcPlus } from "react-icons/fc";
 
 import { toast } from "react-toastify";
 
-import { CreateNewUser } from "~/services/ApiServices";
+import { putUpdateUser } from "~/services/ApiServices";
 
 import _ from "lodash";
 
-function UpdateUser({ fetchListUsers, show, setShow, dataUpdateUser }) {
+function UpdateUser({
+  fetchListUsers,
+  show,
+  setShow,
+  dataUpdateUser,
+  setDataUpdateUser,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
@@ -28,8 +34,8 @@ function UpdateUser({ fetchListUsers, show, setShow, dataUpdateUser }) {
   };
 
   useEffect(() => {
-    console.log(dataUpdateUser);
     if (!_.isEmpty(dataUpdateUser)) {
+      // check xem nếu không phải là Object rỗng
       setEmail(dataUpdateUser.email);
       setUserName(dataUpdateUser.username);
       setRole(dataUpdateUser.role);
@@ -48,29 +54,22 @@ function UpdateUser({ fetchListUsers, show, setShow, dataUpdateUser }) {
     setRole("USER");
     setAvatar("");
     setPreviewAvatar("");
-  };
-
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
+    setDataUpdateUser({}); // set lại cho data của user thành Object rỗng đễ k lỗi useEffect
   };
 
   const handleSubmitCreateUser = async () => {
     // Validate
-    const isValidEmail = validateEmail(email);
-    if (!isValidEmail) {
-      toast.error("Invalid email");
-      return;
-    }
-    if (!password) {
-      toast.error("Invalid password");
-      return;
-    }
+    // const isValidEmail = validateEmail(email);
+    // if (!isValidEmail) {
+    //   toast.error("Invalid email");
+    //   return;
+    // }
+    // if (!password) {
+    //   toast.error("Invalid password");
+    //   return;
+    // }
 
-    let data = await CreateNewUser(email, password, userName, role, avatar);
+    let data = await putUpdateUser(dataUpdateUser.id, userName, role, avatar);
 
     if (data && data.EC === 0) {
       toast.success(data.EM);

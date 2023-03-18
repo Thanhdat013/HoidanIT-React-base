@@ -15,3 +15,13 @@ export const CreateNewUser = (email, password, userName, role, avatar) => {
 export const getAllUser = () => {
   return getAxios.get("v1/participant/all");
 };
+
+export const putUpdateUser = (id, userName, role, avatar) => {
+  const dataUpdate = new FormData();
+  dataUpdate.append("id", id);
+  dataUpdate.append("username", userName);
+  dataUpdate.append("role", role);
+  dataUpdate.append("userImage", avatar);
+
+  return getAxios.put("v1/participant", dataUpdate);
+};
