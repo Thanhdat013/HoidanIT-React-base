@@ -6,9 +6,13 @@ import { getAllUser } from "~/services/ApiServices";
 
 import "./AddNewUser.scss";
 import TableUser from "./TableUser";
+import UpdateUser from "./UpdateUser";
 
 function ManageUser() {
   const [listUser, setListUser] = useState([]);
+  const [showListUpdateUser, setShowListUpdateUser] = useState(false);
+
+  const [dataUpdateUser, setDataUpdateUser] = useState({});
 
   useEffect(() => {
     fetchListUsers();
@@ -21,6 +25,11 @@ function ManageUser() {
     }
   };
 
+  const handleClickUpdate = (user) => {
+    setShowListUpdateUser(true);
+    setDataUpdateUser(user);
+  };
+
   return (
     <div className="manage-user-container">
       <div className="manage-user-title">Manage User</div>
@@ -29,8 +38,13 @@ function ManageUser() {
         <AddNewUser fetchListUsers={fetchListUsers} />
       </div>
       <div className="user-table">
-        <TableUser listUser={listUser} />
+        <TableUser listUser={listUser} handleClickUpdate={handleClickUpdate} />
       </div>
+      <UpdateUser
+        show={showListUpdateUser}
+        setShow={setShowListUpdateUser}
+        dataUpdateUser={dataUpdateUser}
+      />
     </div>
   );
 }
