@@ -8,13 +8,16 @@ import "./AddNewUser.scss";
 import TableUser from "./TableUser";
 import UpdateUser from "./UpdateUser";
 import ViewDetailUser from "./ViewDetailUser";
+import DeleteUser from "./DeleteUser";
 
 function ManageUser() {
   const [listUser, setListUser] = useState([]);
   const [showListUpdateUser, setShowListUpdateUser] = useState(false);
   const [showViewDetailUser, setShowViewDetailUser] = useState(false);
+  const [showDeleteUser, setShowDeleteUser] = useState(false);
 
   const [dataUpdateUser, setDataUpdateUser] = useState({});
+  const [dataDeleteUser, setDataDeleteUser] = useState({});
 
   useEffect(() => {
     fetchListUsers();
@@ -36,6 +39,11 @@ function ManageUser() {
     setDataUpdateUser(user);
   };
 
+  const handleClickDelete = (user) => {
+    setShowDeleteUser(true);
+    setDataDeleteUser(user);
+  };
+
   return (
     <div className="manage-user-container">
       <div className="manage-user-title">Manage User</div>
@@ -48,6 +56,7 @@ function ManageUser() {
           listUser={listUser}
           handleClickUpdate={handleClickUpdate}
           handleClickViewDetail={handleClickViewDetail}
+          handleClickDelete={handleClickDelete}
         />
       </div>
       <UpdateUser
@@ -63,6 +72,12 @@ function ManageUser() {
         setShow={setShowViewDetailUser}
         dataUpdateUser={dataUpdateUser}
         setDataUpdateUser={setDataUpdateUser}
+      />
+      <DeleteUser
+        show={showDeleteUser}
+        setShow={setShowDeleteUser}
+        dataDeleteUser={dataDeleteUser}
+        fetchListUsers={fetchListUsers}
       />
     </div>
   );

@@ -25,3 +25,7 @@ export const putUpdateUser = (id, userName, role, avatar) => {
 
   return getAxios.put("v1/participant", dataUpdate);
 };
+
+export const deleteUser = (userId) => {
+  return getAxios.delete("v1/participant", { data: { id: userId } });
+};
