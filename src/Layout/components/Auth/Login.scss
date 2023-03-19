@@ -1,7 +1,25 @@
 .login-container {
   .login-header {
     height: 45px;
-    text-align: right;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    padding-right: 100px;
+    padding-top: 10px;
+
+    .sign-btn {
+      margin-left: 12px;
+
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+  .forgot-password {
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 
   .login-title {
@@ -25,5 +43,12 @@
   .login-btn {
     width: 100%;
     margin-top: 24px;
+  }
+  .back-home-btn {
+    border: none;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 }

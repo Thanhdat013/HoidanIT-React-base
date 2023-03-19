@@ -33,3 +33,10 @@ export const putUpdateUser = (id, userName, role, avatar) => {
 export const deleteUser = (userId) => {
   return getAxios.delete("v1/participant", { data: { id: userId } });
 };
+
+export const postLogin = (email, password) => {
+  return getAxios.post("v1/login", {
+    email,
+    password,
+  });
+};
