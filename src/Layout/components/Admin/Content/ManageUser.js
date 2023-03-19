@@ -15,6 +15,7 @@ function ManageUser() {
   const LIMIT_USER = 4;
 
   const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [listUser, setListUser] = useState([]);
   const [showListUpdateUser, setShowListUpdateUser] = useState(false);
@@ -63,7 +64,12 @@ function ManageUser() {
       <div className="manage-user-title">Manage User</div>
       <div className="user-content"></div>
       <div>
-        <AddNewUser fetchListUsers={fetchListUsers} />
+        <AddNewUser
+          fetchListUsers={fetchListUsers}
+          fetchListUsersWithPaginate={fetchListUsersWithPaginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
       <div className="user-table">
         {/* <TableUser
@@ -79,6 +85,8 @@ function ManageUser() {
           handleClickViewDetail={handleClickViewDetail}
           handleClickDelete={handleClickDelete}
           fetchListUsersWithPaginate={fetchListUsersWithPaginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
           pageCount={pageCount}
         />
       </div>
@@ -88,6 +96,9 @@ function ManageUser() {
         fetchListUsers={fetchListUsers}
         dataUpdateUser={dataUpdateUser}
         setDataUpdateUser={setDataUpdateUser}
+        fetchListUsersWithPaginate={fetchListUsersWithPaginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
 
       <ViewDetailUser
@@ -101,6 +112,9 @@ function ManageUser() {
         setShow={setShowDeleteUser}
         dataDeleteUser={dataDeleteUser}
         fetchListUsers={fetchListUsers}
+        fetchListUsersWithPaginate={fetchListUsersWithPaginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </div>
   );

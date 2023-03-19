@@ -6,11 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./redux/store";
-import Users from "./Layout/components/Users/Users";
-import Admin from "./Layout/components/Admin/Admin";
-import HomePage from "./Layout/components/Home/HomePage";
-import ManageUser from "./Layout/components/Admin/Content/ManageUser";
-import DashBoard from "./Layout/components/Admin/Content/DashBoard";
+import Users from "~/Layout/components/Users/Users";
+import Admin from "~/Layout/components/Admin/Admin";
+import Login from "~/Layout/components/Auth/Login";
+import HomePage from "~/Layout/components/Home/HomePage";
+import ManageUser from "~/Layout/components/Admin/Content/ManageUser";
+import DashBoard from "~/Layout/components/Admin/Content/DashBoard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,6 +27,7 @@ root.render(
           <Route index element={<DashBoard />} />
           <Route path="manage-user" element={<ManageUser />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
     {/* </React.StrictMode> */}

@@ -17,6 +17,9 @@ function UpdateUser({
   setShow,
   dataUpdateUser,
   setDataUpdateUser,
+  fetchListUsersWithPaginate,
+  currentPage,
+  setCurrentPage,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,7 +77,8 @@ function UpdateUser({
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
-      await fetchListUsers();
+      // await fetchListUsers();
+      await fetchListUsersWithPaginate(currentPage);
     }
 
     if (data && data.EC !== 0) {

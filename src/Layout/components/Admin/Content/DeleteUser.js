@@ -5,7 +5,15 @@ import { toast } from "react-toastify";
 
 import { deleteUser } from "~/services/ApiServices";
 
-function DeleteUser({ show, setShow, dataDeleteUser, fetchListUsers }) {
+function DeleteUser({
+  show,
+  setShow,
+  dataDeleteUser,
+  fetchListUsers,
+  fetchListUsersWithPaginate,
+  currentPage,
+  setCurrentPage,
+}) {
   const handleClose = () => setShow(false);
   const handleSubmitDeleteUser = async () => {
     let data = await deleteUser(dataDeleteUser.id);
@@ -13,7 +21,9 @@ function DeleteUser({ show, setShow, dataDeleteUser, fetchListUsers }) {
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
-      await fetchListUsers();
+      // await fetchListUsers();
+      setCurrentPage(1);
+      await fetchListUsersWithPaginate(1);
     }
 
     if (data && data.EC !== 0) {

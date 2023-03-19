@@ -1,5 +1,4 @@
 import ReactPaginate from "react-paginate";
-import { useState, useEffect } from "react";
 
 const TableUserPaginate = ({
   listUser,
@@ -8,9 +7,12 @@ const TableUserPaginate = ({
   handleClickDelete,
   fetchListUsersWithPaginate,
   pageCount,
+  currentPage,
+  setCurrentPage,
 }) => {
   const handlePageClick = (e) => {
     fetchListUsersWithPaginate(+e.selected + 1);
+    setCurrentPage(+e.selected + 1);
     console.log(`User requested page number ${e.selected}, which is offset `);
   };
 
@@ -85,6 +87,7 @@ const TableUserPaginate = ({
           containerClassName="pagination"
           activeClassName="active"
           renderOnZeroPageCount={null}
+          forcePage={currentPage - 1}
         />
       </div>
     </>

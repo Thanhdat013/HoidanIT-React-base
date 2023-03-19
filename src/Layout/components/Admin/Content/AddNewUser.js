@@ -8,7 +8,12 @@ import { toast } from "react-toastify";
 
 import { CreateNewUser } from "~/services/ApiServices";
 
-function AddNewUser({ fetchListUsers }) {
+function AddNewUser({
+  fetchListUsers,
+  fetchListUsersWithPaginate,
+  currentPage,
+  setCurrentPage,
+}) {
   const [show, setShow] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -64,7 +69,9 @@ function AddNewUser({ fetchListUsers }) {
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
-      await fetchListUsers();
+      // await fetchListUsers();
+      setCurrentPage(1);
+      await fetchListUsersWithPaginate(1);
     }
 
     if (data && data.EC !== 0) {
