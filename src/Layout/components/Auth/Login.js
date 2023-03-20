@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 import "./Auth.scss";
 import Button from "~/components/Button/Button";
 import { postLogin } from "~/services/ApiServices";
+import { doLogin } from "~/redux/action/userAction";
 
 function Login() {
+  // Redux
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,6 +36,7 @@ function Login() {
     // submit Api
     let data = await postLogin(email, password);
     if (data && data.EC === 0) {
+      dispatch(doLogin(data));
       toast.success(data.EM);
       navigate("/");
     }
