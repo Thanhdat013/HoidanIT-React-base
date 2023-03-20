@@ -34,10 +34,11 @@ export const deleteUser = (userId) => {
   return getAxios.delete("v1/participant", { data: { id: userId } });
 };
 
-export const postLogin = (email, password) => {
+export const postLogin = (email, password, delay) => {
   return getAxios.post("v1/login", {
     email,
     password,
+    delay: 5000,
   });
 };
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { FaSpinner } from "react-icons/fa";
 
 import "./Auth.scss";
 import Button from "~/components/Button/Button";
@@ -14,6 +15,7 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateEmail = (email) => {
     return String(email)
@@ -33,16 +35,20 @@ function Login() {
       toast.error("Invalid password");
       return;
     }
+
+    setIsLoading(true);
     // submit Api
     let data = await postLogin(email, password);
     if (data && data.EC === 0) {
       dispatch(doLogin(data));
       toast.success(data.EM);
+      setIsLoading(false);
       navigate("/");
     }
 
     if (data && +data.EC !== 0) {
       toast.error(data.EM);
+      setIsLoading(false);
     }
   };
 
@@ -92,7 +98,13 @@ function Login() {
         </div>
         <span className="forgot-password">Forgot password?</span>
         <div>
-          <Button primary className="login-btn" onClick={() => handleLogin()}>
+          <Button
+            primary
+            className="login-btn"
+            onClick={() => handleLogin()}
+            disabled={isLoading}
+          >
+            {isLoading && <FaSpinner className="loaderIcon" />}
             Login to HoiDanIt
           </Button>
         </div>
