@@ -4,17 +4,20 @@ import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-import store from "./redux/store";
 import Layout from "./Layout";
+import { store, persistor } from "~/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    {/* <React.StrictMode> */}
-    <BrowserRouter>
-      <Layout />
-    </BrowserRouter>
-    {/* </React.StrictMode> */}
+    <PersistGate loading={null} persistor={persistor}>
+      {/* <React.StrictMode> */}
+      <BrowserRouter>
+        <Layout />
+      </BrowserRouter>
+      {/* </React.StrictMode> */}
+    </PersistGate>
   </Provider>
 );
 
