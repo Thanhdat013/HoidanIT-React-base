@@ -40,3 +40,11 @@ export const postLogin = (email, password) => {
     password,
   });
 };
+
+export const postSignup = (email, password, username) => {
+  return getAxios.post("v1/register", {
+    email,
+    password,
+    username,
+  });
+};

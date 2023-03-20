@@ -17,6 +17,9 @@ const Header = () => {
   const handleLogin = () => {
     navigate("/login");
   };
+  const handleSignup = () => {
+    navigate("/signup");
+  };
 
   return (
     <Navbar bg="light" expand="lg" className={cx("navbar")}>
@@ -41,7 +44,9 @@ const Header = () => {
             <Button outline onClick={() => handleLogin()}>
               Log in
             </Button>
-            <Button primary>Sign up</Button>
+            <Button primary onClick={() => handleSignup()}>
+              Sign up
+            </Button>
             {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
               <NavDropdown.Item>Action</NavDropdown.Item>
               <NavDropdown.Item>Another action</NavDropdown.Item>
