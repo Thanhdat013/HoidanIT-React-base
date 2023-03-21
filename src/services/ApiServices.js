@@ -49,3 +49,11 @@ export const postSignup = (email, password, username) => {
     username,
   });
 };
+
+export const getQuizByUser = () => {
+  return getAxios.get("v1/quiz-by-participant");
+};
+
+export const getDataQuiz = (id) => {
+  return getAxios.get(`v1/questions-by-quiz?quizId=${id}`);
+};

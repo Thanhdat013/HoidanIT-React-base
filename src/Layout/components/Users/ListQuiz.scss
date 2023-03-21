@@ -1,0 +1,17 @@
+.list-quiz-container {
+  display: flex;
+  gap: 50px;
+
+  .card-img-top {
+    width: 286px;
+    height: 286px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    border-top: 1px solid #ddd;
+  }
+  .card-text {
+    height: 48px;
+  }
+}
