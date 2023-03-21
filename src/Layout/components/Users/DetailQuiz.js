@@ -39,6 +39,7 @@ const DetailQuiz = () => {
               image = item.image;
             }
 
+            item.answers.isChecked = false;
             answer.push(item.answers);
           });
           return { questionId: key, answer, questionDesc, image };
@@ -58,11 +59,35 @@ const DetailQuiz = () => {
       setCurrentQuestion(currentQuestion + 1);
   };
 
+  const handleCheckAnswer = (answerId, questionId) => {
+    let dataQuizClone = _.cloneDeep(dataQuiz);
+    let question = dataQuizClone.find(
+      (item) => +item.questionId === +questionId
+    );
+    if (question && question.answer) {
+      let answerChecked = question.answer.map((item) => {
+        if (+item.id === +answerId) {
+          item.isChecked = !item.isChecked;
+        }
+        return item;
+      });
+      question.answer = answerChecked;
+    }
+    let index = dataQuizClone.findIndex(
+      (item) => +item.questionId === +questionId // tìm đc cái index trong dataQuizClone mà nó đang được check hoặc uncheck
+    );
+    if (index > -1) {
+      dataQuizClone[index] = question; // gán cái dataQuizClone có cái index đang được check hoặc uncheck giá trị item.isChecked
+      setDataQuiz(dataQuizClone);
+    }
+  };
+
   return (
     <div className="quiz-container">
       <div className="quiz-left">
         <h2 className="quiz-left-title">Quiz : {location?.state?.quizTitle}</h2>
         <Question
+          handleCheckAnswer={handleCheckAnswer}
           currentQuestion={currentQuestion}
           data={dataQuiz.length > 0 ? dataQuiz[currentQuestion] : []}
         />
@@ -72,6 +97,9 @@ const DetailQuiz = () => {
           </Button>
           <Button className="btn-footer" outline onClick={() => handleNext()}>
             Next
+          </Button>
+          <Button className="btn-footer" outline onClick={() => handleNext()}>
+            Finish
           </Button>
         </div>
       </div>
