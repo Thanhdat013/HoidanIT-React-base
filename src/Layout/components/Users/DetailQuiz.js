@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import _ from "lodash";
 
-import { getDataQuiz } from "~/services/ApiServices";
+import { getDataQuiz, postSubmitQuiz } from "~/services/ApiServices";
 
 import "./DetailQuiz.scss";
 import Button from "~/components/Button/Button";
 import Question from "./Question";
+import ModalResult from "./ModalResult";
 
 const DetailQuiz = () => {
   const params = useParams();
@@ -19,6 +20,8 @@ const DetailQuiz = () => {
 
   const [dataQuiz, setDataQuiz] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isShowModalResult, setIsShowModalResult] = useState(false);
+  const [dataModalResult, setDataModalResult] = useState({});
 
   const fetchQuestion = async () => {
     let res = await getDataQuiz(quizId);
@@ -57,6 +60,40 @@ const DetailQuiz = () => {
   const handleNext = () => {
     if (dataQuiz && dataQuiz.length > currentQuestion + 1)
       setCurrentQuestion(currentQuestion + 1);
+  };
+
+  const handleFinishQuiz = async () => {
+    if (dataQuiz && dataQuiz.length > 0) {
+      let dataFinishSubmit = {
+        quizId: +quizId,
+        answers: [],
+      };
+      let answers = [];
+      dataQuiz.forEach((item) => {
+        let questionId = +item.questionId;
+        let answerResult = [];
+        item.answer.map((answerCheck) => {
+          if (answerCheck.isChecked) answerResult.push(answerCheck.id);
+        });
+        answers.push({
+          questionId: questionId,
+          userAnswerId: answerResult,
+        });
+      });
+      dataFinishSubmit.answers = answers;
+      console.log(dataFinishSubmit);
+      // Submit API
+      let res = await postSubmitQuiz(dataFinishSubmit);
+      console.log(res);
+      if (res && res.EC === 0) {
+        setDataModalResult({
+          countCorrect: res.DT.countCorrect,
+          countTotal: res.DT.countTotal,
+          quizData: res.DT.quizData,
+        });
+        setIsShowModalResult(true);
+      }
+    }
   };
 
   const handleCheckAnswer = (answerId, questionId) => {
@@ -98,12 +135,21 @@ const DetailQuiz = () => {
           <Button className="btn-footer" outline onClick={() => handleNext()}>
             Next
           </Button>
-          <Button className="btn-footer" outline onClick={() => handleNext()}>
+          <Button
+            className="btn-footer"
+            outline
+            onClick={() => handleFinishQuiz()}
+          >
             Finish
           </Button>
         </div>
       </div>
       <div className="quiz-right">Count down</div>
+      <ModalResult
+        show={isShowModalResult}
+        setShow={setIsShowModalResult}
+        dataModalResult={dataModalResult}
+      />
     </div>
   );
 };
