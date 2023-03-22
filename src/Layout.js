@@ -3,15 +3,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import App from "./App";
-import Users from "~/Layout/components/Users/Users";
 import Admin from "~/Layout/components/Admin/Admin";
 import Login from "~/Layout/components/Auth/Login";
 import HomePage from "~/Layout/components/Home/HomePage";
-import ManageUser from "~/Layout/components/Admin/Content/ManageUser";
-import DashBoard from "~/Layout/components/Admin/Content/DashBoard";
+import ManageUser from "./Layout/components/Admin/Content/ManageUsers/ManageUser";
+import DashBoard from "./Layout/components/Admin/Content/ManageUsers/DashBoard";
 import Register from "~/Layout/components/Auth/Register";
 import ListQuiz from "~/Layout/components/Users/ListQuiz";
 import DetailQuiz from "~/Layout/components/Users/DetailQuiz";
+import ManageQuiz from "~/Layout/components/Admin/Content/ManageQuiz/ManageQuiz";
 
 const Layout = () => {
   const NotFound = () => {
@@ -34,6 +34,7 @@ const Layout = () => {
         <Route path="/admin" element={<Admin />}>
           <Route index element={<DashBoard />} />
           <Route path="manage-user" element={<ManageUser />} />
+          <Route path="manage-quizzes" element={<ManageQuiz />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />

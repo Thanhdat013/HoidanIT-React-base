@@ -1,5 +1,6 @@
 import getAxios from "~/util/axiosCustomize";
 
+// Users
 export const CreateNewUser = (email, password, userName, role, avatar) => {
   // Call API submit data
   const data = new FormData();
@@ -7,7 +8,7 @@ export const CreateNewUser = (email, password, userName, role, avatar) => {
   data.append("password", password);
   data.append("username", userName);
   data.append("role", role);
-  data.append("userImage", avatar);
+  data.append("avatar", avatar);
 
   return getAxios.post("v1/participant", data);
 };
@@ -34,6 +35,11 @@ export const deleteUser = (userId) => {
   return getAxios.delete("v1/participant", { data: { id: userId } });
 };
 
+export const getQuizByUser = () => {
+  return getAxios.get("v1/quiz-by-participant");
+};
+
+// Login + Signup
 export const postLogin = (email, password, delay) => {
   return getAxios.post("v1/login", {
     email,
@@ -50,14 +56,21 @@ export const postSignup = (email, password, username) => {
   });
 };
 
-export const getQuizByUser = () => {
-  return getAxios.get("v1/quiz-by-participant");
-};
-
+// Quiz test
 export const getDataQuiz = (id) => {
   return getAxios.get(`v1/questions-by-quiz?quizId=${id}`);
 };
 
 export const postSubmitQuiz = (data) => {
   return getAxios.post("v1/quiz-submit", { ...data });
+};
+
+export const createNewQuiz = (description, name, difficulty, quizImage) => {
+  const data = new FormData();
+  data.append("description", description);
+  data.append("name", name);
+  data.append("difficulty", difficulty);
+  data.append("quizImage", quizImage);
+
+  return getAxios.post("v1/quiz", data);
 };

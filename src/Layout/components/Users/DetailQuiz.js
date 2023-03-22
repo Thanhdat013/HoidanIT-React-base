@@ -81,10 +81,8 @@ const DetailQuiz = () => {
         });
       });
       dataFinishSubmit.answers = answers;
-      console.log(dataFinishSubmit);
       // Submit API
       let res = await postSubmitQuiz(dataFinishSubmit);
-      console.log(res);
       if (res && res.EC === 0) {
         setDataModalResult({
           countCorrect: res.DT.countCorrect,

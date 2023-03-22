@@ -61,17 +61,6 @@ function UpdateUser({
   };
 
   const handleSubmitCreateUser = async () => {
-    // Validate
-    // const isValidEmail = validateEmail(email);
-    // if (!isValidEmail) {
-    //   toast.error("Invalid email");
-    //   return;
-    // }
-    // if (!password) {
-    //   toast.error("Invalid password");
-    //   return;
-    // }
-
     let data = await putUpdateUser(dataUpdateUser.id, userName, role, avatar);
 
     if (data && data.EC === 0) {
