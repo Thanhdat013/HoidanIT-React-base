@@ -74,3 +74,10 @@ export const createNewQuiz = (description, name, difficulty, quizImage) => {
 
   return getAxios.post("v1/quiz", data);
 };
+export const getAllQuiz = () => {
+  return getAxios.get("v1/quiz/all");
+};
+
+export const deleteQuizForAdmin = (id) => {
+  return getAxios.delete(`v1/quiz/${id}`);
+};

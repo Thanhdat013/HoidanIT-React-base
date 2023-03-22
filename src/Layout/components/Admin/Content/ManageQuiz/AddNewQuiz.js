@@ -11,7 +11,7 @@ import { FcPlus } from "react-icons/fc";
 
 import "./ManageQuiz.scss";
 
-const AddNewQuiz = ({ show, setShow }) => {
+const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [quizType, setQuizType] = useState("");
@@ -24,10 +24,10 @@ const AddNewQuiz = ({ show, setShow }) => {
       return;
     }
     let data = await createNewQuiz(desc, name, quizType?.value, image);
-    console.log(data);
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
+      fetchListQuiz(); // render lại giao diện
     }
 
     if (data && data.EC !== 0) {
