@@ -25,7 +25,7 @@
   .image-preview {
     border: 1px dashed #ccc;
     border-radius: 8px;
-    height: 150px;
+    height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +48,7 @@
 
   .quiz-image {
     height: 100%;
-    width: 150px;
+    width: 480px;
     object-fit: cover;
   }
 }

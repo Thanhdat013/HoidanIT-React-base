@@ -3,18 +3,25 @@ import { useState, useEffect } from "react";
 import { getAllQuiz } from "~/services/ApiServices";
 
 import "./ManageQuiz.scss";
-import Button from "~/components/Button/Button";
+import Button from "react-bootstrap/Button";
+
 import AddNewQuiz from "./AddNewQuiz";
 import TableQuizzes from "./TableQuizzes";
 
 import DeleteQuiz from "./DeleteQuiz";
+import UpdateQuiz from "./UpdateQuiz";
 
 const ManageQuiz = () => {
   const [isShow, setIsShow] = useState(false);
   const [listQuiz, setListQuiz] = useState([]);
 
+  // set state delete quiz
   const [showDeleteQuiz, setShowDeleteQuiz] = useState(false);
   const [dataDeleteQuiz, setDataDeleteQuiz] = useState({});
+
+  // set state update quiz
+  const [showUpdateQuiz, setShowUpdateQuiz] = useState(false);
+  const [dataUpdateQuiz, setDataUpdateQuiz] = useState({});
 
   useEffect(() => {
     fetchListQuiz();
@@ -34,6 +41,12 @@ const ManageQuiz = () => {
     setShowDeleteQuiz(true);
     setDataDeleteQuiz(quiz);
   };
+
+  const handleClickUpdateQuiz = (quiz) => {
+    setShowUpdateQuiz(true);
+    setDataUpdateQuiz(quiz);
+  };
+
   return (
     <div className="quiz-add-container">
       <div className="quiz-add-heading">Manage Quizzes</div>
@@ -42,10 +55,14 @@ const ManageQuiz = () => {
         <TableQuizzes
           listQuiz={listQuiz}
           handleClickDeleteQuiz={handleClickDeleteQuiz}
+          handleClickUpdateQuiz={handleClickUpdateQuiz}
         />
       </div>
       <div className="quiz-add-body">
-        <Button primary onClick={() => handleShowAddNewQuiz()}>
+        <Button
+          className="btn btn-primary"
+          onClick={() => handleShowAddNewQuiz()}
+        >
           Add new quiz{" "}
         </Button>
       </div>
@@ -59,6 +76,13 @@ const ManageQuiz = () => {
         setShow={setShowDeleteQuiz}
         fetchListQuiz={fetchListQuiz}
         dataDeleteQuiz={dataDeleteQuiz}
+      />
+      <UpdateQuiz
+        show={showUpdateQuiz}
+        setShow={setShowUpdateQuiz}
+        fetchListQuiz={fetchListQuiz}
+        dataUpdateQuiz={dataUpdateQuiz}
+        setDataUpdateQuiz={setDataUpdateQuiz}
       />
     </div>
   );

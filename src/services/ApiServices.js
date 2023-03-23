@@ -81,3 +81,20 @@ export const getAllQuiz = () => {
 export const deleteQuizForAdmin = (id) => {
   return getAxios.delete(`v1/quiz/${id}`);
 };
+
+export const putUpdateQuizForAdmin = (
+  id,
+  description,
+  name,
+  difficulty,
+  quizImage
+) => {
+  const dataUpdate = new FormData();
+  dataUpdate.append("id", id);
+  dataUpdate.append("description", description);
+  dataUpdate.append("name", name);
+  dataUpdate.append("difficulty", difficulty);
+  dataUpdate.append("quizImage", quizImage);
+
+  return getAxios.put("v1/quiz", dataUpdate);
+};

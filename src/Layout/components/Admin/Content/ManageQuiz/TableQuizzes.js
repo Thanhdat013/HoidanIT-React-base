@@ -1,4 +1,8 @@
-const TableQuizzes = ({ listQuiz, handleClickDeleteQuiz }) => {
+const TableQuizzes = ({
+  listQuiz,
+  handleClickDeleteQuiz,
+  handleClickUpdateQuiz,
+}) => {
   return (
     <>
       <table className="table table-hover table-bordered">
@@ -22,7 +26,12 @@ const TableQuizzes = ({ listQuiz, handleClickDeleteQuiz }) => {
                   <td>{item.description}</td>
                   <td>{item.difficulty}</td>
                   <td>
-                    <button className="btn btn-warning mx-3">Update</button>
+                    <button
+                      className="btn btn-warning mx-3"
+                      onClick={() => handleClickUpdateQuiz(item)}
+                    >
+                      Update
+                    </button>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleClickDeleteQuiz(item)}
