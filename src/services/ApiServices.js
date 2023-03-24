@@ -44,7 +44,7 @@ export const postLogin = (email, password, delay) => {
   return getAxios.post("v1/login", {
     email,
     password,
-    delay: 5000,
+    // delay: 5000, // tạo delay cho khi đăng nhập
   });
 };
 
@@ -97,4 +97,26 @@ export const putUpdateQuizForAdmin = (
   dataUpdate.append("quizImage", quizImage);
 
   return getAxios.put("v1/quiz", dataUpdate);
+};
+
+// Questions and answers
+
+export const postCreateNewQuestion = (quiz_id, description, questionImage) => {
+  const data = new FormData();
+  data.append("quiz_id", quiz_id);
+  data.append("description", description);
+  data.append("questionImage", questionImage);
+  return getAxios.post("v1/question", data);
+};
+
+export const postCreateNewAnswer = (
+  description,
+  correct_answer,
+  question_id
+) => {
+  return getAxios.post("v1/answer", {
+    description,
+    correct_answer,
+    question_id,
+  });
 };

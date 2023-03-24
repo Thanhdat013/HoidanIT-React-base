@@ -1,42 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Select from "react-select";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
 
 import { FcPlus, FcMinus } from "react-icons/fc";
+import { Button } from "react-bootstrap";
+
+import {
+  getAllQuiz,
+  postCreateNewQuestion,
+  postCreateNewAnswer,
+} from "~/services/ApiServices";
 
 const AddNewQuestions = () => {
   const [questions, setQuestions] = useState([
     {
       id: uuidv4(),
-      description: "question 1",
+      description: "",
       image: "",
       imageName: "",
       answers: [
         {
           id: uuidv4(),
-          description: "answer 1 of question 1",
-          isCorrect: false,
-        },
-      ],
-    },
-    {
-      id: uuidv4(),
-      description: "question 2",
-      image: "",
-      imageName: "",
-
-      answers: [
-        {
-          id: uuidv4(),
-          description: "answer 1 of question 2",
+          description: "",
           isCorrect: false,
         },
       ],
     },
   ]);
 
+  // add and remove questions
   const handleAddRemoveQuestion = (type, id) => {
     if (type === "ADD") {
       const newQuestion = {
@@ -57,6 +51,7 @@ const AddNewQuestions = () => {
     }
   };
 
+  // add and remove answers
   const handleAddRemoveAnswer = (type, questionId, answerId) => {
     let questionClone = _.cloneDeep(questions);
     let index = questionClone.findIndex((item) => item.id === questionId);
@@ -78,15 +73,8 @@ const AddNewQuestions = () => {
       setQuestions(questionClone);
     }
   };
-  const handelPreviewAvatar = (e, questionId) => {
-    let questionClone = _.cloneDeep(questions);
-    let index = questionClone.findIndex((item) => item.id === questionId);
-    if (e.target.files[0] !== undefined) {
-      questionClone[index].image = e.target.files[0];
-      setQuestions(questionClone);
-    }
-  };
 
+  // change value of question and answers
   const handleChangeQuestionAnswer = (type, e, questionId, answerId) => {
     let questionClone = _.cloneDeep(questions);
     let index = questionClone.findIndex((item) => item.id === questionId);
@@ -100,21 +88,80 @@ const AddNewQuestions = () => {
       );
       questionClone[index].answers[indexAnswer].description = e.target.value;
       setQuestions(questionClone);
-      console.log(questionClone[index].answers[indexAnswer].description);
     }
   };
 
-  const options = [
-    { value: "EASY", label: "EASY" },
-    { value: "MEDIUM", label: "MEDIUM" },
-    { value: "HARD", label: "HARD" },
-  ];
+  // add + remove image for questions
+  const handleAddImage = (e, questionId) => {
+    let questionClone = _.cloneDeep(questions);
+    let index = questionClone.findIndex((item) => item.id === questionId);
+    if (e.target.files[0] !== undefined) {
+      questionClone[index].image = e.target.files[0];
+      setQuestions(questionClone);
+    }
+  };
+  const handleRemoveImage = (questionId) => {
+    let questionClone = _.cloneDeep(questions);
+    let index = questionClone.findIndex((item) => item.id === questionId);
+
+    questionClone[index].image = "";
+    setQuestions(questionClone);
+  };
+
+  const [listQuiz, setListQuiz] = useState([]);
+  const [selectedQuiz, setSelectedQuiz] = useState({});
+
+  useEffect(() => {
+    fetchListQuiz();
+  }, []);
+
+  const fetchListQuiz = async () => {
+    let res = await getAllQuiz();
+    if (res.EC === 0) {
+      let quiz = res.DT.map((item) => {
+        return {
+          value: item.id,
+          label: `${item.id} - ${item.name}`,
+        };
+      });
+      setListQuiz(quiz);
+    }
+  };
+
+  const handleSubmitQuestion = async () => {
+    console.log("check submit", questions);
+
+    await Promise.all(
+      questions.map(async (question) => {
+        const newQuestion = await postCreateNewQuestion(
+          +selectedQuiz.value,
+          question.description,
+          question.image
+        );
+
+        await Promise.all(
+          question.answers.map(async (answer) => {
+            const newAnswer = await postCreateNewAnswer(
+              answer.description,
+              answer.isCorrect,
+              newQuestion.DT.id
+            );
+          })
+        );
+      })
+    );
+  };
 
   return (
     <div className="question-container">
       <div className="select-quiz">
         <label className="form-label">Quiz type</label>
-        <Select options={options} placeholder="Quiz type..." />
+        <Select
+          options={listQuiz}
+          placeholder="Quiz type..."
+          defaultValue={selectedQuiz}
+          onChange={setSelectedQuiz}
+        />
       </div>
       {questions &&
         questions.length > 0 &&
@@ -209,7 +256,7 @@ const AddNewQuestions = () => {
                       type="file"
                       hidden
                       id={`${item.id}`}
-                      onChange={(e) => handelPreviewAvatar(e, item.id)}
+                      onChange={(e) => handleAddImage(e, item.id)}
                     />
                   </div>
                   <div className="col-md-12 image-preview">
@@ -230,7 +277,10 @@ const AddNewQuestions = () => {
                       <FcPlus />
                       Upload file image
                     </label>
-                    <label className="form-label upload-file">
+                    <label
+                      className="form-label upload-file"
+                      onClick={() => handleRemoveImage(item.id)}
+                    >
                       <FcMinus />
                       Remover file image
                     </label>
@@ -240,8 +290,14 @@ const AddNewQuestions = () => {
             </div>
           );
         })}
-
-      {/* add more question */}
+      {questions && questions.length > 0 && (
+        <Button
+          className="btn btn-warning"
+          onClick={() => handleSubmitQuestion()}
+        >
+          Save questions
+        </Button>
+      )}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Button from "~/components/Button/Button";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import "./ListQuiz.scss";
@@ -36,8 +36,7 @@ const ListQuiz = () => {
                 <h5 className="card-title">Quiz {index + 1}</h5>
                 <p className="card-text">{item.description}</p>
                 <Button
-                  primary
-                  className="btn "
+                  className="btn btn-primary "
                   onClick={() =>
                     navigate(`/quiz/${item.id}`, {
                       state: { quizTitle: item.description },
