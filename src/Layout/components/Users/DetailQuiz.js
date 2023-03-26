@@ -8,6 +8,7 @@ import "./DetailQuiz.scss";
 import Button from "~/components/Button/Button";
 import Question from "./Question";
 import ModalResult from "./ModalResult";
+import RightQuizTest from "./RightQuizTest/RightQuizTest";
 
 const DetailQuiz = () => {
   const params = useParams();
@@ -142,7 +143,12 @@ const DetailQuiz = () => {
           </Button>
         </div>
       </div>
-      <div className="quiz-right">Count down</div>
+      <div className="quiz-right">
+        <RightQuizTest
+          dataQuiz={dataQuiz}
+          handleFinishQuiz={handleFinishQuiz}
+        />
+      </div>
       <ModalResult
         show={isShowModalResult}
         setShow={setIsShowModalResult}

@@ -1,8 +1,11 @@
 import _ from "lodash";
-
+import { useState } from "react";
+import Lightbox from "react-awesome-lightbox";
 import "./DetailQuiz.scss";
 
 const Question = ({ data, currentQuestion, handleCheckAnswer }) => {
+  const [isPreviewImage, setIsPreviewImage] = useState(false);
+
   if (_.isEmpty(data)) {
     // check xem có phải mảng rỗng không vơi thư viện Lodash
     return <></>;
@@ -16,15 +19,32 @@ const Question = ({ data, currentQuestion, handleCheckAnswer }) => {
     <>
       <div className="image">
         {data.image ? (
-          <img
-            className="question-image"
-            src={`data:image/jpeg;base64,${data.image} `}
-          />
+          <>
+            <img
+              onClick={() => setIsPreviewImage(true)}
+              className="question-image"
+              src={`data:image/jpeg;base64,${data.image} `}
+            />
+            {isPreviewImage === true && (
+              <Lightbox
+                image={`data:image/jpeg;base64,${data.image} `}
+                onClose={() => setIsPreviewImage(false)}
+              ></Lightbox>
+            )}
+          </>
         ) : (
-          <img
-            className="question-image"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
-          />
+          <>
+            <img
+              className="question-image"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
+            />
+            {isPreviewImage === true && (
+              <Lightbox
+                image={`data:image/jpeg;base64,${data.image} `}
+                onClose={() => setIsPreviewImage(false)}
+              ></Lightbox>
+            )}
+          </>
         )}
       </div>
       <div className="question">
