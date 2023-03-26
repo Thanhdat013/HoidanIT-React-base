@@ -12,6 +12,7 @@ import {
   getAllQuiz,
   postCreateNewQuestion,
   postCreateNewAnswer,
+  getQuizWithQA,
 } from "~/services/ApiServices";
 
 const initQuestion = [
@@ -29,7 +30,7 @@ const initQuestion = [
     ],
   },
 ];
-const AddNewQuestions = () => {
+const QuizQA = () => {
   const [questions, setQuestions] = useState(initQuestion);
 
   // add and remove questions
@@ -145,6 +146,45 @@ const AddNewQuestions = () => {
     }
   };
 
+  useEffect(() => {
+    if (selectedQuiz && selectedQuiz.value) fetchListQuizWithQA();
+  }, [selectedQuiz]);
+
+  function urltoFile(url, filename, mimeType) {
+    return fetch(url)
+      .then(function (res) {
+        return res.arrayBuffer();
+      })
+      .then(function (buf) {
+        return new File([buf], filename, { type: mimeType });
+      });
+  }
+
+  const fetchListQuizWithQA = async () => {
+    let res = await getQuizWithQA(selectedQuiz.value);
+    if (res && res.EC === 0) {
+      console.log(res);
+      // console.log(URL.createObjectURL(res.DT.qa.imageFile));
+      // convert base64 to File object for image
+      let newQA = [];
+      for (let i = 0; i < res.DT.qa.length; i++) {
+        let question = res.DT.qa[i];
+        if (question.imageFile) {
+          question.imageName = `Question-${question.id}.png`;
+
+          question.imageFile = await urltoFile(
+            `data:image/png;base64,${question.imageFile}`,
+            `Question-${question.id}.png`,
+            "image/png"
+          );
+        }
+        newQA.push(question);
+      }
+
+      setQuestions(newQA);
+    }
+  };
+
   const handleSubmitQuestion = async () => {
     // invalidate for add  quiz
     if (_.isEmpty(selectedQuiz)) {
@@ -206,7 +246,6 @@ const AddNewQuestions = () => {
         console.log(answer);
       }
     }
-
     setQuestions(initQuestion);
     toast.success("create new question");
     setSelectedQuiz({});
@@ -352,14 +391,14 @@ const AddNewQuestions = () => {
                   </div>
                   <div className="question-btn-image">
                     <label
-                      className="form-label questions-upload-file"
+                      className="form-label upload-file"
                       htmlFor={`${item.id}`}
                     >
                       <FcPlus />
                       Upload file image
                     </label>
                     <label
-                      className="form-label questions-upload-file"
+                      className="form-label upload-file"
                       onClick={() => handleRemoveImage(item.id)}
                     >
                       <FcMinus />
@@ -383,4 +422,4 @@ const AddNewQuestions = () => {
   );
 };
 
-export default AddNewQuestions;
+export default QuizQA;

@@ -28,7 +28,7 @@ const ListQuiz = () => {
           return (
             <div key={item.id} className="card" style={{ width: "18rem" }}>
               <img
-                className="card-img-top"
+                className="card-img-top "
                 src={`data:image/jpeg;base64, ${item.image}`}
                 alt="Card image cap"
               />

@@ -99,6 +99,17 @@ export const putUpdateQuizForAdmin = (
   return getAxios.put("v1/quiz", dataUpdate);
 };
 
+export const postAssignQuizForUser = (quizId, userId) => {
+  return getAxios.post("v1/quiz-assign-to-user", {
+    quizId,
+    userId,
+  });
+};
+
+export const getQuizWithQA = (quizId) => {
+  return getAxios.get(`v1/quiz-with-qa/${quizId}`);
+};
+
 // Questions and answers
 
 export const postCreateNewQuestion = (quiz_id, description, questionImage) => {

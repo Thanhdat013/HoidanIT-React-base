@@ -3,7 +3,6 @@
   .quiz-add-heading {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 28px;
   }
   .quiz-add-body {
     .quiz-save-btn {
@@ -21,8 +20,8 @@
   }
 }
 
-.modal-add-user {
-  .image-preview {
+.quiz-modal-add-user {
+  .quiz-image-preview {
     border: 1px dashed #ccc;
     border-radius: 8px;
     height: 320px;
@@ -31,7 +30,7 @@
     justify-content: center;
   }
 
-  .upload-file {
+  .quiz-upload-file {
     display: flex;
     align-items: center;
     background-color: #ccc;

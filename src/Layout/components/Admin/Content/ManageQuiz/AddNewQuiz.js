@@ -66,7 +66,7 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
       show={show}
       onHide={handleClose}
       size="xl"
-      className="modal-add-user"
+      className="quiz-modal-add-user"
     >
       <Modal.Header closeButton>
         <Modal.Title>Add New Quiz</Modal.Title>
@@ -104,7 +104,10 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
             />
           </div>
           <div className="col-md-12">
-            <label className="form-label upload-file" htmlFor="labelUpload">
+            <label
+              className="form-label quiz-upload-file"
+              htmlFor="labelUpload"
+            >
               <FcPlus />
               Upload file image
             </label>
@@ -115,7 +118,7 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
               onChange={(e) => handelPreviewAvatar(e)}
             />
           </div>
-          <div className="col-md-12 image-preview">
+          <div className="col-md-12 quiz-image-preview">
             {previewAvatar ? (
               <img src={previewAvatar} className="quiz-image" />
             ) : (
