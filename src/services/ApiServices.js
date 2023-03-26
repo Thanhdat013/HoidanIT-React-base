@@ -110,6 +110,10 @@ export const getQuizWithQA = (quizId) => {
   return getAxios.get(`v1/quiz-with-qa/${quizId}`);
 };
 
+export const postUpsertQA = (data) => {
+  return getAxios.post("v1/quiz-upsert-qa", { ...data });
+};
+
 // Questions and answers
 
 export const postCreateNewQuestion = (quiz_id, description, questionImage) => {

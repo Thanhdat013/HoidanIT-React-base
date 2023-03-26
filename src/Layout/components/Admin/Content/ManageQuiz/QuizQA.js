@@ -13,6 +13,7 @@ import {
   postCreateNewQuestion,
   postCreateNewAnswer,
   getQuizWithQA,
+  postUpsertQA,
 } from "~/services/ApiServices";
 
 const initQuestion = [
@@ -164,14 +165,11 @@ const QuizQA = () => {
     let res = await getQuizWithQA(selectedQuiz.value);
     if (res && res.EC === 0) {
       console.log(res);
-      // console.log(URL.createObjectURL(res.DT.qa.imageFile));
       // convert base64 to File object for image
       let newQA = [];
       for (let i = 0; i < res.DT.qa.length; i++) {
         let question = res.DT.qa[i];
         if (question.imageFile) {
-          question.imageName = `Question-${question.id}.png`;
-
           question.imageFile = await urltoFile(
             `data:image/png;base64,${question.imageFile}`,
             `Question-${question.id}.png`,
@@ -229,27 +227,49 @@ const QuizQA = () => {
       return;
     }
 
-    for (const question of questions) {
-      const newQuestion = await postCreateNewQuestion(
-        +selectedQuiz.value,
-        question.description,
-        question.imageFile
-      );
+    // for (const question of questions) {
+    //   const newQuestion = await postCreateNewQuestion(
+    //     +selectedQuiz.value,
+    //     question.description,
+    //     question.imageFile
+    //   );
 
-      for (const answer of question.answers) {
-        const newAnswer = await postCreateNewAnswer(
-          answer.description,
-          answer.isCorrect,
-          newQuestion.DT.id
-        );
+    //   for (const answer of question.answers) {
+    //     await postCreateNewAnswer(
+    //       answer.description,
+    //       answer.isCorrect,
+    //       newQuestion.DT.id
+    //     );
+    //   }
+    // }
 
-        console.log(answer);
+    let questionClone = _.cloneDeep(questions);
+    for (let i = 0; i < questionClone.length; i++) {
+      if (questionClone[i].imageFile) {
+        // convert file object to base 64
+        questionClone[i].imageFile = await toBase64(questionClone[i].imageFile);
       }
     }
+
+    let res = await postUpsertQA({
+      quizId: selectedQuiz.value,
+      questions: questionClone,
+    });
+    if (res && res.EC === 0) {
+      toast.success(res.EM);
+      fetchListQuizWithQA();
+    }
+
     setQuestions(initQuestion);
-    toast.success("create new question");
     setSelectedQuiz({});
   };
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
 
   return (
     <div className="question-container">
