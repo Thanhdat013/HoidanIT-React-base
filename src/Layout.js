@@ -13,6 +13,7 @@ import ListQuiz from "~/Layout/components/Users/ListQuiz";
 import DetailQuiz from "~/Layout/components/Users/DetailQuiz";
 import ManageQuiz from "~/Layout/components/Admin/Content/ManageQuiz/ManageQuiz";
 import ManageQuestions from "~/Layout/components/Admin/Content/MangeQuestions/ManageQuestions";
+import PrivateRoutes from "~/routes/PrivateRoutes";
 
 const Layout = () => {
   const NotFound = () => {
@@ -28,11 +29,25 @@ const Layout = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="users" element={<ListQuiz />} />
+          <Route
+            path="users"
+            element={
+              <PrivateRoutes>
+                <ListQuiz />
+              </PrivateRoutes>
+            }
+          />
         </Route>
         <Route path="/quiz/:id" element={<DetailQuiz />} />
 
-        <Route path="/admin" element={<Admin />}>
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoutes>
+              <Admin />
+            </PrivateRoutes>
+          }
+        >
           <Route index element={<DashBoard />} />
           <Route path="manage-user" element={<ManageUser />} />
           <Route path="manage-quizzes" element={<ManageQuiz />} />

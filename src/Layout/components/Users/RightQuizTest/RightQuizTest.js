@@ -22,6 +22,8 @@ const RightQuizTest = ({ dataQuiz, handleFinishQuiz, setCurrentQuestion }) => {
   };
 
   const handleClickQuestion = (question, index) => {
+    setCurrentQuestion(index);
+
     if (refDiv.current) {
       refDiv.current.forEach((item) => {
         if (item && item.className === "quiz-container-question clicked") {
@@ -32,13 +34,10 @@ const RightQuizTest = ({ dataQuiz, handleFinishQuiz, setCurrentQuestion }) => {
     if (question && question.answer.length > 0) {
       let isAnswerSelected = question.answer.find((a) => a.isChecked === true);
       if (isAnswerSelected) {
-        setCurrentQuestion(index);
-
         return;
       }
     }
     refDiv.current[index].className = "quiz-container-question clicked";
-    setCurrentQuestion(index);
   };
 
   return (
