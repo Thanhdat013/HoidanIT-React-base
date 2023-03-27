@@ -56,6 +56,13 @@ export const postSignup = (email, password, username) => {
   });
 };
 
+export const postLogout = (email, refresh_token) => {
+  return getAxios.post("v1/logout", {
+    email,
+    refresh_token,
+  });
+};
+
 // Quiz test
 export const getDataQuiz = (id) => {
   return getAxios.get(`v1/questions-by-quiz?quizId=${id}`);

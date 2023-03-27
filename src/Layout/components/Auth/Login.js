@@ -62,7 +62,9 @@ function Login() {
   const handleNavigateSignup = () => {
     navigate("/signup");
   };
-
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) handleLogin();
+  };
   return (
     <div className="login-container">
       <div className="login-header">
@@ -94,6 +96,7 @@ function Login() {
             className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e)}
           />
         </div>
         <span className="forgot-password">Forgot password?</span>

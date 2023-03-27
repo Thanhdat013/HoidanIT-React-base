@@ -59,6 +59,9 @@ function Register() {
       toast.error(data.EM);
     }
   };
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) handleSignup();
+  };
 
   return (
     <div className="register-container">
@@ -92,6 +95,7 @@ function Register() {
               className="form-control input-password "
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e)}
             />
             <div className="password-icon">
               {!isShowIconPassword ? (
@@ -111,6 +115,7 @@ function Register() {
             className="form-control"
             value={username}
             onChange={(e) => setUserNames(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e)}
           />
         </div>
         <div>
