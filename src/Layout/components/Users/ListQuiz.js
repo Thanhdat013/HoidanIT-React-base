@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useTranslation, Trans } from "react-i18next";
 
 import "./ListQuiz.scss";
 
@@ -9,6 +10,7 @@ import { getQuizByUser } from "~/services/ApiServices";
 const ListQuiz = () => {
   const navigate = useNavigate();
   const [arrQuiz, setArrQuiz] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     getQuizData();
@@ -33,7 +35,11 @@ const ListQuiz = () => {
                 alt="Card image cap"
               />
               <div className="card-body">
-                <h5 className="card-title">Quiz {index + 1}</h5>
+                <h5 className="card-title">
+                  {" "}
+                  {t("quiz.quizTitle1")}
+                  {index + 1}
+                </h5>
                 <p className="card-text">{item.description}</p>
                 <Button
                   className="btn btn-primary "
@@ -43,15 +49,13 @@ const ListQuiz = () => {
                     })
                   }
                 >
-                  Go Quiz
+                  {t("quiz.quizButton")}
                 </Button>
               </div>
             </div>
           );
         })}
-      {arrQuiz && arrQuiz.length === 0 && (
-        <div>You don't have any quiz now...</div>
-      )}
+      {arrQuiz && arrQuiz.length === 0 && <div>{t("quiz.quizNotice")}</div>}
     </div>
   );
 };

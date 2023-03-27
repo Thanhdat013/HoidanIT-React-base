@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -14,6 +15,8 @@ function AddNewUser({
   currentPage,
   setCurrentPage,
 }) {
+  const { t } = useTranslation();
+
   const [show, setShow] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -93,12 +96,12 @@ function AddNewUser({
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add New User</Modal.Title>
+          <Modal.Title>{t("addUser.addUserTitle")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Email</label>
+              <label className="form-label">{t("user.userEmail")}</label>
               <input
                 type="email"
                 className="form-control"
@@ -107,7 +110,7 @@ function AddNewUser({
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Password</label>
+              <label className="form-label">{t("user.userPassword")}</label>
               <input
                 type="password"
                 className="form-control"
@@ -116,7 +119,7 @@ function AddNewUser({
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">UserName</label>
+              <label className="form-label">{t("user.userTagName")}</label>
               <input
                 type="text"
                 className="form-control"
@@ -125,20 +128,20 @@ function AddNewUser({
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Role</label>
+              <label className="form-label">{t("user.userRole")}</label>
               <select
                 className="form-select"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
               >
-                <option value={"USER"}>USER</option>
-                <option value={"ADMIN"}>ADMIN</option>
+                <option value={"USER"}>{t("user.userUSER")}</option>
+                <option value={"ADMIN"}>{t("user.userADmin")}</option>
               </select>
             </div>
             <div className="col-md-12">
               <label className="form-label upload-file" htmlFor="labelUpload">
                 <FcPlus />
-                Upload file image
+                {t("user.userUploadImage")}
               </label>
               <input
                 type="file"
@@ -151,17 +154,17 @@ function AddNewUser({
               {previewAvatar ? (
                 <img src={previewAvatar} className="image" />
               ) : (
-                <span>Preview image</span>
+                <span>{t("user.userPreviewImage")}</span>
               )}
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("addUser.addUserClose")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
-            Save
+            {t("addUser.addUserSave")}
           </Button>
         </Modal.Footer>
       </Modal>

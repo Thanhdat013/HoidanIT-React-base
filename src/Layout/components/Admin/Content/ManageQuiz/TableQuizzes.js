@@ -1,18 +1,22 @@
+import { useTranslation, Trans } from "react-i18next";
+
 const TableQuizzes = ({
   listQuiz,
   handleClickDeleteQuiz,
   handleClickUpdateQuiz,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <table className="table table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Difficult</th>
-            <th scope="col">Action</th>
+            <th scope="col"> {t("tableQuiz.tableQuizId")}</th>
+            <th scope="col">{t("tableQuiz.tableQuizName")} </th>
+            <th scope="col">{t("tableQuiz.tableQuizDesc")} </th>
+            <th scope="col">{t("tableQuiz.tableQuizDifficult")} </th>
+            <th scope="col">{t("tableQuiz.tableQuizAction")} </th>
           </tr>
         </thead>
         <tbody>
@@ -30,13 +34,13 @@ const TableQuizzes = ({
                       className="btn btn-warning mx-3"
                       onClick={() => handleClickUpdateQuiz(item)}
                     >
-                      Update
+                      {t("tableQuiz.tableQuizUpdate")}
                     </button>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleClickDeleteQuiz(item)}
                     >
-                      Delete
+                      {t("tableQuiz.tableQuizDelete")}
                     </button>
                   </td>
                 </tr>
@@ -45,7 +49,7 @@ const TableQuizzes = ({
 
           {listQuiz && listQuiz.length === 0 && (
             <tr>
-              <td colSpan="4">Not found data</td>
+              <td colSpan="4">{t("tableQuiz.tableQuizData")}</td>
             </tr>
           )}
         </tbody>

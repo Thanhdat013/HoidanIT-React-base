@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/Button";
+import { useTranslation } from "react-i18next";
 import Modal from "react-bootstrap/Modal";
 
 import { toast } from "react-toastify";
@@ -30,23 +31,24 @@ function DeleteUser({
       toast.error(data.EM);
     }
   };
+  const { t } = useTranslation();
 
   return (
     <>
       <Modal show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title>Confirm delete user</Modal.Title>
+          <Modal.Title>{t("deleteUser.deleteUserConfirm")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure delete this user : email{" "}
+          {t("deleteUser.deleteUserEmail")}{" "}
           {dataDeleteUser && dataDeleteUser.email}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Cancer
+            {t("deleteUser.deleteUserCancel")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitDeleteUser()}>
-            Delete
+            {t("deleteUser.deleteUserDelete")}
           </Button>
         </Modal.Footer>
       </Modal>

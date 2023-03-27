@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import Select from "react-select";
 import React from "react";
@@ -211,11 +212,12 @@ const AddNewQuestions = () => {
     toast.success("create new question");
     setSelectedQuiz({});
   };
+  const { t } = useTranslation();
 
   return (
     <div className="question-container">
       <div className="select-quiz">
-        <label className="form-label">Quiz type</label>
+        <label className="form-label">{t("question.questionQuiz")}</label>
         <Select
           options={listQuiz}
           placeholder="Quiz type..."
@@ -232,7 +234,9 @@ const AddNewQuestions = () => {
               <div className="add-question-container-left">
                 <form className="row g-3 questions-container-left ">
                   <div className="col-md-12  ">
-                    <label className="form-label mb-3">Question</label>
+                    <label className="form-label mb-3">
+                      {t("question.questionTitle")}
+                    </label>
                     <div className="question-body">
                       <input
                         value={item.description}
@@ -265,7 +269,9 @@ const AddNewQuestions = () => {
                       )}
                     </div>
                   </div>
-                  <label className="form-label mb-1 ">Answers</label>
+                  <label className="form-label mb-1 ">
+                    {t("question.questionAnswer")}
+                  </label>
                   {/* render answer */}
                   {item.answers &&
                     item.answers.map((answer) => {
@@ -347,7 +353,7 @@ const AddNewQuestions = () => {
                         className="question-image"
                       />
                     ) : (
-                      <span>Preview image</span>
+                      <span>{t("question.questionPreviewImage")}</span>
                     )}
                   </div>
                   <div className="question-btn-image">
@@ -356,14 +362,14 @@ const AddNewQuestions = () => {
                       htmlFor={`${item.id}`}
                     >
                       <FcPlus />
-                      Upload file image
+                      {t("question.questionUploadImage")}
                     </label>
                     <label
                       className="form-label questions-upload-file"
                       onClick={() => handleRemoveImage(item.id)}
                     >
                       <FcMinus />
-                      Remover file image
+                      {t("question.questionRemoveImage")}
                     </label>
                   </div>
                 </form>
@@ -376,7 +382,7 @@ const AddNewQuestions = () => {
           className="btn btn-warning"
           onClick={() => handleSubmitQuestion()}
         >
-          Save questions
+          {t("question.questionSave")}
         </Button>
       )}
     </div>

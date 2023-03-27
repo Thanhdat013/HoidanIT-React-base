@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Select from "react-select";
 
 import Button from "react-bootstrap/Button";
@@ -80,6 +81,7 @@ function UpdateQuiz({
       toast.error(data.EM);
     }
   };
+  const { t } = useTranslation();
 
   return (
     <>
@@ -91,12 +93,14 @@ function UpdateQuiz({
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update Quiz</Modal.Title>
+          <Modal.Title>{t("updateQuiz.updateQuizTitle")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-12">
-              <label className="form-label">Name</label>
+              <label className="form-label">
+                {t("updateQuiz.updateQuizName")}
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -106,7 +110,9 @@ function UpdateQuiz({
               />
             </div>
             <div className="col-md-12">
-              <label className="form-label">Description</label>
+              <label className="form-label">
+                {t("updateQuiz.updateQuizDesc")}
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -117,7 +123,9 @@ function UpdateQuiz({
             </div>
 
             <div className="col-md-12">
-              <label className="form-label">Quiz type</label>
+              <label className="form-label">
+                {t("updateQuiz.updateQuizType")}
+              </label>
               <Select
                 options={options}
                 placeholder="Quiz type..."
@@ -128,7 +136,7 @@ function UpdateQuiz({
             <div className="col-md-12">
               <label className="form-label upload-file" htmlFor="labelUpload">
                 <FcPlus />
-                Upload file image
+                {t("updateQuiz.updateQuizUploadImage")}
               </label>
               <input
                 type="file"
@@ -141,17 +149,17 @@ function UpdateQuiz({
               {previewAvatar ? (
                 <img src={previewAvatar} className="quiz-image" />
               ) : (
-                <span>Preview image</span>
+                <span>{t("updateQuiz.updateQuizPreviewImage")}</span>
               )}
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("updateQuiz.updateQuizClose")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitUpdateQuiz()}>
-            Save
+            {t("updateQuiz.updateQuizSave")}
           </Button>
         </Modal.Footer>
       </Modal>

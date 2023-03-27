@@ -1,0 +1,131 @@
+{
+  "homePage": {
+    "homePageTitle1": "Có rất nhiều cách để hỏi.....",
+    "homePageTitle2": "Bạn không muốn làm một hình thức nhàm chán. Và khán giả của bạn sẽ không trả lời một. Thay vào đó, hãy tạo một kiểu chữ—và làm cho mọi người hài lòng.",
+    "homePageLogin": "Bắt đầu - hoàn toàn miễn phí",
+    "homePageLogout": " Làm bài kiểm tra ngay bây giờ !"
+  },
+  "header": {
+    "headerBrand": "React-Bootstrap",
+    "headerHome": "Trang chủ",
+    "headerUsers": "Người dùng",
+    "headerAdmin": "Quản lý"
+  },
+  "quiz": {
+    "quizTitle1": "Bài test :",
+    "quizPrev": "Trước ",
+    "quizNext": "Tiếp ",
+    "quizFinish": "Kết thúc ",
+    "quizButton": "Đến bài test ",
+    "quizNotice": "Bạn chưa có bài test nào bây giờ You don't have any quiz now... "
+  },
+  "manageQuiz": {
+    "manageQuiz": "Quản lý các bài test",
+    "manageQuizAdd": "Thêm bài test mới ",
+    "manageQuizUpdate": "Cập nhật câu hởi và câu trả lời cho bài test ",
+    "manageQuizAssign": "Gán bài test"
+  },
+  "tableQuiz": {
+    "tableQuizId": "Id",
+    "tableQuizName": "Tên",
+    "tableQuizDesc": "Miêu tả",
+    "tableQuizDifficult": "Độ khó",
+    "tableQuizUpdate": "Hoạt động",
+    "tableQuizAction": "Cập nhật",
+    "tableQuizDelete": "Xóa",
+    "tableQuizData": "Không tìm thấy dữ liệu"
+  },
+  "deleteQuiz": {
+    "deleteQuizTitle1": "Xác nhận xóa bài test",
+    "deleteQuizConfirm": "Bạn có chắc muốn xóa bài test này : id",
+    "deleteQuizCancel": "Hủy bỏ",
+    "deleteQuizYes": "Xóa"
+  },
+  "addQuiz": {
+    "addQuizTitle": "Thêm bài test mới",
+    "addQuizName": "Tên",
+    "addQuizDesc": "Miêu tả",
+    "addQuizType": "Độ khó",
+    "addQuizImage": "Tải ảnh lên",
+    "addQuizPreviewImage": "Xem trước ảnh",
+    "addQuizClose": "Đóng",
+    "addQuizSave": "Lưu"
+  },
+  "assignQuiz": {
+    "assignQuizType": "Chọn bài test",
+    "assignQuizUser": "Chọn người dùng",
+    "assignQuizAssign": "Gán"
+  },
+  "quizQA": {
+    "quizQAQuestion": "Câu hỏi",
+    "quizQAAnswer": "Câu trả lời",
+    "quizQAPreviewImage": "Xem trước ảnh",
+    "quizQAUploadImage": "Tải ảnh lên",
+    "quizQARemoveImage": "Xóa bỏ ảnh",
+    "quizQASave": "Lưu câu hỏi"
+  },
+  "updateQuiz": {
+    "updateQuizTitle": "Cập nhật bài test",
+    "updateQuizName": "Tên",
+    "updateQuizDesc": "Miêu tả",
+    "updateQuizType": "Độ khó",
+    "updateQuizUploadImage": "Tải ảnh lên",
+    "updateQuizPreviewImage": "Xem trước ảnh",
+    "updateQuizClose": "ĐÓng",
+    "updateQuizSave": "Lưu"
+  },
+  "user": {
+    "userEmail": "Thư điện tử",
+    "userPassword": "Mật khẩu",
+    "userTagName": "Tên người dùng",
+    "userName": "Tên",
+    "userRole": "Vai trò",
+    "userUSER": "NGƯỜI DÙNG",
+    "userADmin": "QUẢN TRỊ VIÊN",
+    "userUploadImage": "Tải ảnh lên",
+    "userPreviewImage": "Xem trước ảnh"
+  },
+  "addUser": {
+    "addUserTitle": "Thêm người dùng mới",
+    "addUserClose": "Đóng",
+    "updateQuizSave": "Lưu"
+  },
+  "deleteUser": {
+    "deleteUserConfirm": "Xác nhận xóa người dùng",
+    "deleteUserEmail": "Bạn có chắc là muốn xóa người dùng này : thư điện tử",
+    "deleteUserCancel": "Hủy bỏ",
+    "deleteUserDelete": "Xóa"
+  },
+  "manageUser": {
+    "manageUserTitle": "Quản lý người dùng"
+  },
+  "tableUser": {
+    "tableUserId": "ID",
+    "tableUserName": "Tên",
+    "tableUserEmail": "Thư điện tử",
+    "tableUserRole": "Vai tro",
+    "tableUserAction": "Hành Động",
+    "tableUserView": "Xem",
+    "tableUserUpdate": "Cập nhật",
+    "tableUserDelete": "Xóa",
+    "tableUserData": "Không có dữ liệu"
+  },
+  "updateUser": {
+    "updateUserTitle": "Cập nhật người dùng",
+    "updateUserClose": "Đóng",
+    "updateUserSave": "Lưu"
+  },
+  "viewUser": {
+    "viewUserTitle": "Xem chi tiết người dùng"
+  },
+  "question": {
+    "questionManage": "Quản lý câu hỏi",
+    "questionQuiz": "Chọn bài test",
+    "questionTitle": "Câu hỏi",
+    "questionAnswer": "Câu trả lời",
+    "questionPreviewImage": "Xem trước ảnh",
+    "questionUploadImage": "Tải ảnh lên",
+    "questionRemoveImage": "Xóa bỏ ảnh",
+    "questionSave": "Lưu câu hỏi"
+  }
+}

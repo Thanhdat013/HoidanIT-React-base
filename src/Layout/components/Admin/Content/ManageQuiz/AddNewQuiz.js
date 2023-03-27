@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
+import { useTranslation } from "react-i18next";
 
 import { createNewQuiz } from "~/services/ApiServices";
 
@@ -12,6 +13,8 @@ import { FcPlus } from "react-icons/fc";
 import "./ManageQuiz.scss";
 
 const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
+  const { t } = useTranslation();
+
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [quizType, setQuizType] = useState("");
@@ -69,12 +72,12 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
       className="quiz-modal-add-user"
     >
       <Modal.Header closeButton>
-        <Modal.Title>Add New Quiz</Modal.Title>
+        <Modal.Title>{t("addQuiz.addQuizTitle")}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form className="row g-3">
           <div className="col-md-12">
-            <label className="form-label">Name</label>
+            <label className="form-label">{t("addQuiz.addQuizName")}</label>
             <input
               type="text"
               className="form-control"
@@ -84,7 +87,7 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
             />
           </div>
           <div className="col-md-12">
-            <label className="form-label">Description</label>
+            <label className="form-label">{t("addQuiz.addQuizDesc")}</label>
             <input
               type="text"
               className="form-control"
@@ -95,7 +98,7 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
           </div>
 
           <div className="col-md-12">
-            <label className="form-label">Quiz type</label>
+            <label className="form-label">{t("addQuiz.addQuizType")}</label>
             <Select
               options={options}
               placeholder="Quiz type..."
@@ -109,7 +112,7 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
               htmlFor="labelUpload"
             >
               <FcPlus />
-              Upload file image
+              {t("addQuiz.addQuizImage")}
             </label>
             <input
               type="file"
@@ -122,17 +125,17 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
             {previewAvatar ? (
               <img src={previewAvatar} className="quiz-image" />
             ) : (
-              <span>Preview image</span>
+              <span>{t("addQuiz.addQuizPreviewImage")}</span>
             )}
           </div>
         </form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          {t("addQuiz.addQuizClose")}
         </Button>
         <Button variant="primary" onClick={() => handleSubmitCreateQuiz()}>
-          Save
+          {t("addQuiz.addQuizSave")}
         </Button>
       </Modal.Footer>
     </Modal>

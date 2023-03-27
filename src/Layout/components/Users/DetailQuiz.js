@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import _ from "lodash";
+import { useTranslation, Trans } from "react-i18next";
 
 import { getDataQuiz, postSubmitQuiz } from "~/services/ApiServices";
 
@@ -11,6 +12,8 @@ import ModalResult from "./ModalResult";
 import RightQuizTest from "./RightQuizTest/RightQuizTest";
 
 const DetailQuiz = () => {
+  const { t } = useTranslation();
+
   const params = useParams();
   const location = useLocation(); // check được xem người dùng chuyển hường từ đâu sang
   const quizId = params.id;
@@ -46,6 +49,7 @@ const DetailQuiz = () => {
             item.answers.isChecked = false;
             answer.push(item.answers);
           });
+          answer = _.orderBy(answer, ["id"], ["asc"]); // sắp xếp thứ tự các câu hỏi dung thư viện lodash
           return { questionId: key, answer, questionDesc, image };
         })
         .value();
@@ -121,7 +125,11 @@ const DetailQuiz = () => {
   return (
     <div className="quiz-container">
       <div className="quiz-left">
-        <h2 className="quiz-left-title">Quiz : {location?.state?.quizTitle}</h2>
+        <h2 className="quiz-left-title">
+          {" "}
+          {t("quiz.quizTitle1")}
+          {location?.state?.quizTitle}
+        </h2>
         <Question
           handleCheckAnswer={handleCheckAnswer}
           currentQuestion={currentQuestion}
@@ -129,17 +137,17 @@ const DetailQuiz = () => {
         />
         <div className="quiz-left-footer">
           <Button className="btn-footer" outline onClick={() => handlePrev()}>
-            Prev
+            {t("quiz.quizPrev")}
           </Button>
           <Button className="btn-footer" outline onClick={() => handleNext()}>
-            Next
+            {t("quiz.quizNext")}
           </Button>
           <Button
             className="btn-footer"
             outline
             onClick={() => handleFinishQuiz()}
           >
-            Finish
+            {t("quiz.quizFinish")}
           </Button>
         </div>
       </div>

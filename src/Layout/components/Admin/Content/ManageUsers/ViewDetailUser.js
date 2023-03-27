@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
 
 import Modal from "react-bootstrap/Modal";
@@ -44,6 +45,7 @@ function ViewDetailUser({ show, setShow, dataUpdateUser, setDataUpdateUser }) {
     setPreviewAvatar("");
     setDataUpdateUser({}); // set lại cho data của user thành Object rỗng đễ k lỗi useEffect
   };
+  const { t } = useTranslation();
 
   return (
     <>
@@ -55,12 +57,12 @@ function ViewDetailUser({ show, setShow, dataUpdateUser, setDataUpdateUser }) {
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update User</Modal.Title>
+          <Modal.Title>{t("viewUser.viewUserTitle")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Email</label>
+              <label className="form-label">{t("user.userEmail")}</label>
               <input
                 disabled
                 type="email"
@@ -69,7 +71,7 @@ function ViewDetailUser({ show, setShow, dataUpdateUser, setDataUpdateUser }) {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Password</label>
+              <label className="form-label">{t("user.userPassword")}</label>
               <input
                 disabled
                 type="password"
@@ -78,7 +80,7 @@ function ViewDetailUser({ show, setShow, dataUpdateUser, setDataUpdateUser }) {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">UserName</label>
+              <label className="form-label">{t("user.userTagName")}</label>
               <input
                 disabled
                 type="text"
@@ -87,10 +89,10 @@ function ViewDetailUser({ show, setShow, dataUpdateUser, setDataUpdateUser }) {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Role</label>
+              <label className="form-label">{t("user.userRole")}</label>
               <select disabled className="form-select" value={role}>
-                <option value={"USER"}>USER</option>
-                <option value={"ADMIN"}>ADMIN</option>
+                <option value={"USER"}>{t("user.userUSER")}</option>
+                <option value={"ADMIN"}>{t("user.userADmin")}</option>
               </select>
             </div>
             <div className="col-md-12">
@@ -100,7 +102,7 @@ function ViewDetailUser({ show, setShow, dataUpdateUser, setDataUpdateUser }) {
                 disabled
               >
                 <FcPlus />
-                Upload file image
+                {t("user.userUploadImage")}
               </label>
               <input
                 disabled
@@ -114,7 +116,7 @@ function ViewDetailUser({ show, setShow, dataUpdateUser, setDataUpdateUser }) {
               {previewAvatar ? (
                 <img src={previewAvatar} className="image" />
               ) : (
-                <span>Preview image</span>
+                <span>{t("user.userPreviewImage")}</span>
               )}
             </div>
           </form>

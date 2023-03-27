@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import AddNewUser from "./AddNewUser";
 
 import { useState, useEffect } from "react";
@@ -58,10 +59,11 @@ function ManageUser() {
     setShowDeleteUser(true);
     setDataDeleteUser(user);
   };
+  const { t } = useTranslation();
 
   return (
     <div className="manage-user-container">
-      <div className="manage-user-title">Manage User</div>
+      <div className="manage-user-title">{t("manageUser.manageUserTitle")}</div>
       <div className="user-content"></div>
       <div>
         <AddNewUser

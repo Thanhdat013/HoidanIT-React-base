@@ -1,19 +1,23 @@
+import { useTranslation } from "react-i18next";
+
 const TableUser = ({
   listUser,
   handleClickUpdate,
   handleClickViewDetail,
   handleClickDelete,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <table className="table table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Action</th>
+            <th scope="col">{t("tableUser.tableUserId")}</th>
+            <th scope="col">{t("tableUser.tableUserName")}</th>
+            <th scope="col">{t("tableUser.tableUserEmail")}</th>
+            <th scope="col">{t("tableUser.tableUserRole")}</th>
+            <th scope="col">{t("tableUser.tableUserAction")}</th>
           </tr>
         </thead>
         <tbody>
@@ -30,19 +34,19 @@ const TableUser = ({
                     className="btn btn-secondary"
                     onClick={() => handleClickViewDetail(item)}
                   >
-                    View
+                    {t("tableUser.tableUserView")}
                   </button>
                   <button
                     className="btn btn-warning mx-3"
                     onClick={() => handleClickUpdate(item)}
                   >
-                    Update
+                    {t("tableUser.tableUserUpdate")}
                   </button>
                   <button
                     className="btn btn-danger"
                     onClick={() => handleClickDelete(item)}
                   >
-                    Delete
+                    {t("tableUser.tableUserDelete")}
                   </button>
                 </td>
               </tr>
@@ -50,7 +54,7 @@ const TableUser = ({
 
           {listUser && listUser.length === 0 && (
             <tr>
-              <td colSpan="4">Not found data</td>
+              <td colSpan="4">{t("tableUser.tableUserData")}</td>
             </tr>
           )}
         </tbody>

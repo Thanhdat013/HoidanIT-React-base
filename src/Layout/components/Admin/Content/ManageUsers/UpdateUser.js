@@ -7,6 +7,7 @@ import { FcPlus } from "react-icons/fc";
 
 import { toast } from "react-toastify";
 
+import { useTranslation } from "react-i18next";
 import { putUpdateUser } from "~/services/ApiServices";
 
 import _ from "lodash";
@@ -74,6 +75,7 @@ function UpdateUser({
       toast.error(data.EM);
     }
   };
+  const { t } = useTranslation();
 
   return (
     <>
@@ -85,12 +87,12 @@ function UpdateUser({
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update User</Modal.Title>
+          <Modal.Title>{t("updateUser.updateUserTitle")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Email</label>
+              <label className="form-label">{t("user.userEmail")}</label>
               <input
                 disabled
                 type="email"
@@ -100,7 +102,7 @@ function UpdateUser({
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Password</label>
+              <label className="form-label">{t("user.userPassword")}</label>
               <input
                 disabled
                 type="password"
@@ -110,7 +112,7 @@ function UpdateUser({
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">UserName</label>
+              <label className="form-label">{t("user.userTagName")}</label>
               <input
                 type="text"
                 className="form-control"
@@ -119,20 +121,20 @@ function UpdateUser({
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Role</label>
+              <label className="form-label">{t("user.userRole")}</label>
               <select
                 className="form-select"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
               >
-                <option value={"USER"}>USER</option>
-                <option value={"ADMIN"}>ADMIN</option>
+                <option value={"USER"}>{t("user.userUSER")}</option>
+                <option value={"ADMIN"}>{t("user.userADmin")}</option>
               </select>
             </div>
             <div className="col-md-12">
               <label className="form-label upload-file" htmlFor="labelUpload">
                 <FcPlus />
-                Upload file image
+                {t("user.userUploadImage")}
               </label>
               <input
                 type="file"
@@ -145,17 +147,17 @@ function UpdateUser({
               {previewAvatar ? (
                 <img src={previewAvatar} className="image" />
               ) : (
-                <span>Preview image</span>
+                <span>{t("user.userPreviewImage")}</span>
               )}
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("updateUser.updateUserClose")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
-            Save
+            {t("updateUser.updateUserSave")}
           </Button>
         </Modal.Footer>
       </Modal>

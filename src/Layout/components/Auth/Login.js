@@ -8,6 +8,7 @@ import "./Auth.scss";
 import Button from "~/components/Button/Button";
 import { postLogin } from "~/services/ApiServices";
 import { doLogin } from "~/redux/action/userAction";
+import Language from "~/Layout/components/Header/Language";
 
 function Login() {
   // Redux
@@ -76,6 +77,7 @@ function Login() {
         >
           Sign up
         </Button>
+        <Language />
       </div>
       <div className="login-title col-4  mx-auto">Hoi dan IT</div>
       <div className="login-welcome col-4  mx-auto">Hello, Who's this ?</div>

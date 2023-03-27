@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation, Trans } from "react-i18next";
 
 import { getAllQuiz } from "~/services/ApiServices";
 
@@ -15,6 +16,8 @@ import Button from "react-bootstrap/Button";
 import Accordion from "react-bootstrap/Accordion";
 
 const ManageQuiz = () => {
+  const { t } = useTranslation();
+
   const [isShow, setIsShow] = useState(false);
   const [listQuiz, setListQuiz] = useState([]);
 
@@ -55,7 +58,7 @@ const ManageQuiz = () => {
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header className="quiz-add-heading">
-            Manage Quizzes
+            {t("manageQuiz.manageQuiz")}
           </Accordion.Header>
           <Accordion.Body>
             <div>
@@ -70,7 +73,7 @@ const ManageQuiz = () => {
                 className="btn btn-primary"
                 onClick={() => handleShowAddNewQuiz()}
               >
-                Add new quiz{" "}
+                {t("manageQuiz.manageQuizAdd")}{" "}
               </Button>
             </div>
             <AddNewQuiz
@@ -97,7 +100,7 @@ const ManageQuiz = () => {
       <Accordion>
         <Accordion.Item eventKey="1">
           <Accordion.Header className="quiz-add-heading">
-            Update question and answer of Quizzes
+            {t("manageQuiz.manageQuizUpdate")}
           </Accordion.Header>
           <Accordion.Body>
             <QuizQA />
@@ -107,7 +110,7 @@ const ManageQuiz = () => {
       <Accordion>
         <Accordion.Item eventKey="2">
           <Accordion.Header className="quiz-add-heading">
-            Assign for quiz
+            {t("manageQuiz.manageQuizAssign")}
           </Accordion.Header>
           <Accordion.Body>
             <AssignQuiz />

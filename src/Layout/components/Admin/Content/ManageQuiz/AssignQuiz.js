@@ -1,4 +1,5 @@
 import Select from "react-select";
+import { useTranslation } from "react-i18next";
 
 import { useState, useEffect } from "react";
 
@@ -11,6 +12,8 @@ import { Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 const AssignQuiz = () => {
+  const { t } = useTranslation();
+
   const [listQuiz, setListQuiz] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState({});
 
@@ -74,7 +77,7 @@ const AssignQuiz = () => {
     <>
       <div className="row">
         <div className="col-md-6 ">
-          <label className="form-label">Quiz type</label>
+          <label className="form-label">{t("assignQuiz.assignQuizType")}</label>
           <Select
             options={listQuiz}
             placeholder="List quiz.."
@@ -83,7 +86,7 @@ const AssignQuiz = () => {
           />
         </div>
         <div className="col-md-6">
-          <label className="form-label">Quiz type</label>
+          <label className="form-label">{t("assignQuiz.assignQuizUser")}</label>
           <Select
             options={listUser}
             placeholder="List user..."
@@ -96,7 +99,7 @@ const AssignQuiz = () => {
         className="btn btn-warning mt-4"
         onClick={() => handleAssignQuizForUser()}
       >
-        Assign{" "}
+        {t("assignQuiz.assignQuizAssign")}{" "}
       </Button>
     </>
   );

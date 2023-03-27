@@ -3,6 +3,7 @@ import Select from "react-select";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
+import { useTranslation } from "react-i18next";
 
 import { FcPlus, FcMinus } from "react-icons/fc";
 import { Button } from "react-bootstrap";
@@ -10,8 +11,6 @@ import { toast } from "react-toastify";
 
 import {
   getAllQuiz,
-  postCreateNewQuestion,
-  postCreateNewAnswer,
   getQuizWithQA,
   postUpsertQA,
 } from "~/services/ApiServices";
@@ -32,6 +31,8 @@ const initQuestion = [
   },
 ];
 const QuizQA = () => {
+  const { t } = useTranslation();
+
   const [questions, setQuestions] = useState(initQuestion);
 
   // add and remove questions
@@ -291,7 +292,9 @@ const QuizQA = () => {
               <div className="add-question-container-left">
                 <form className="row g-3 questions-container-left ">
                   <div className="col-md-12  ">
-                    <label className="form-label mb-3">Question</label>
+                    <label className="form-label mb-3">
+                      {t("quizQA.quizQAQuestion")}
+                    </label>
                     <div className="question-body">
                       <input
                         value={item.description}
@@ -324,7 +327,9 @@ const QuizQA = () => {
                       )}
                     </div>
                   </div>
-                  <label className="form-label mb-1 ">Answers</label>
+                  <label className="form-label mb-1 ">
+                    {t("quizQA.quizQAAnswer")}
+                  </label>
                   {/* render answer */}
                   {item.answers &&
                     item.answers.map((answer) => {
@@ -406,7 +411,7 @@ const QuizQA = () => {
                         className="question-image"
                       />
                     ) : (
-                      <span>Preview image</span>
+                      <span>{t("quizQA.quizQAPreviewImage")}</span>
                     )}
                   </div>
                   <div className="question-btn-image">
@@ -415,14 +420,14 @@ const QuizQA = () => {
                       htmlFor={`${item.id}`}
                     >
                       <FcPlus />
-                      Upload file image
+                      {t("quizQA.quizQAUploadImage")}
                     </label>
                     <label
                       className="form-label upload-file"
                       onClick={() => handleRemoveImage(item.id)}
                     >
                       <FcMinus />
-                      Remover file image
+                      {t("quizQA.quizQARemoveImage")}
                     </label>
                   </div>
                 </form>
@@ -435,7 +440,7 @@ const QuizQA = () => {
           className="btn btn-warning"
           onClick={() => handleSubmitQuestion()}
         >
-          Save questions
+          {t("quizQA.quizQASave")}
         </Button>
       )}
     </div>

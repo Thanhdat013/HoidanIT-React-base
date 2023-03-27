@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "./Auth.scss";
 import Button from "~/components/Button/Button";
 import { postSignup } from "~/services/ApiServices";
+import Language from "~/Layout/components/Header/Language";
 
 function Register() {
   const navigate = useNavigate();
@@ -74,6 +75,7 @@ function Register() {
         >
           Log in
         </Button>
+        <Language />
       </div>
       <div className="register-title col-4  mx-auto">Hoi dan IT</div>
       <div className="register-welcome col-4  mx-auto">Start your journey</div>
