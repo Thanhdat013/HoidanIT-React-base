@@ -147,6 +147,7 @@ const DetailQuiz = () => {
         <RightQuizTest
           dataQuiz={dataQuiz}
           handleFinishQuiz={handleFinishQuiz}
+          setCurrentQuestion={setCurrentQuestion}
         />
       </div>
       <ModalResult
