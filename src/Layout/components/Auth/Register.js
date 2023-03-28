@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AiTwotoneEyeInvisible, AiTwotoneEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -63,11 +64,12 @@ function Register() {
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) handleSignup();
   };
+  const { t } = useTranslation();
 
   return (
     <div className="register-container">
       <div className="register-header">
-        <span>Already have an account </span>
+        <span>{t("register.registerHeader")} </span>
         <Button
           outline
           className="sign-btn"
@@ -77,11 +79,15 @@ function Register() {
         </Button>
         <Language />
       </div>
-      <div className="register-title col-4  mx-auto">Hoi dan IT</div>
-      <div className="register-welcome col-4  mx-auto">Start your journey</div>
+      <div className="register-title col-4  mx-auto">
+        {t("register.registerTitle")}
+      </div>
+      <div className="register-welcome col-4  mx-auto">
+        {t("register.registerWelcome")}
+      </div>
       <div className="register-form col-4 mx-auto">
         <div className="form-group">
-          <label>Email (*) </label>
+          <label>{t("register.registerEmail")} </label>
           <input
             type={"email"}
             className="form-control"
@@ -90,7 +96,7 @@ function Register() {
           />
         </div>
         <div className="form-group ">
-          <label>Password (*)</label>
+          <label>{t("register.registerPassword")}</label>
           <div className="password-group">
             <input
               type={!isShowPassword ? "password" : "text"}
@@ -111,7 +117,7 @@ function Register() {
           </div>
         </div>
         <div className="form-group">
-          <label>Username (*)</label>
+          <label>{t("register.registerUsername")} </label>
           <input
             type={"useName"}
             className="form-control"
@@ -126,7 +132,7 @@ function Register() {
             className="register-btn"
             onClick={() => handleSignup()}
           >
-            Create a free account
+            {t("register.registerSubmit")}
           </Button>
         </div>
         <div className="text-center ">
@@ -135,7 +141,7 @@ function Register() {
             className="back-home-btn"
             onClick={() => handleBackHome()}
           >
-            &#60;&#60; Go to homepage
+            &#60;&#60; {t("register.registerBackHome")}
           </Button>
         </div>
       </div>

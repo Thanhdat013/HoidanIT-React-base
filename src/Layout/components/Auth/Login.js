@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -66,10 +67,12 @@ function Login() {
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) handleLogin();
   };
+  const { t } = useTranslation();
+
   return (
     <div className="login-container">
       <div className="login-header">
-        <span>Don't have an account yet?</span>
+        <span>{t("login.loginTitle")} </span>
         <Button
           outline
           className="sign-btn"
@@ -79,11 +82,13 @@ function Login() {
         </Button>
         <Language />
       </div>
-      <div className="login-title col-4  mx-auto">Hoi dan IT</div>
-      <div className="login-welcome col-4  mx-auto">Hello, Who's this ?</div>
+      <div className="login-title col-4  mx-auto">{t("login.loginName")}</div>
+      <div className="login-welcome col-4  mx-auto">
+        {t("login.loginWelcome")}
+      </div>
       <div className="login-form col-4 mx-auto">
         <div className="form-group">
-          <label>Email</label>
+          <label>{t("login.loginEmail")}</label>
           <input
             type={"email"}
             className="form-control"
@@ -92,7 +97,7 @@ function Login() {
           />
         </div>
         <div className="form-group">
-          <label>Password</label>
+          <label>{t("login.loginPassword")}</label>
           <input
             type={"password"}
             className="form-control"
@@ -101,7 +106,9 @@ function Login() {
             onKeyDown={(e) => handleKeyDown(e)}
           />
         </div>
-        <span className="forgot-password">Forgot password?</span>
+        <span className="forgot-password">
+          {t("login.loginForgotPassword")}
+        </span>
         <div>
           <Button
             primary
@@ -110,7 +117,7 @@ function Login() {
             disabled={isLoading}
           >
             {isLoading && <FaSpinner className="loaderIcon" />}
-            Login to HoiDanIt
+            {t("login.loginSubmit")}
           </Button>
         </div>
         <div className="text-center ">
@@ -119,7 +126,7 @@ function Login() {
             className="back-home-btn"
             onClick={() => handleBackHome()}
           >
-            &#60;&#60; Go to homepage
+            &#60;&#60; {t("login.loginBackHome")}
           </Button>
         </div>
       </div>

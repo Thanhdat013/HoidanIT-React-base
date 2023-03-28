@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import { useState } from "react";
 import Lightbox from "react-awesome-lightbox";
@@ -5,6 +6,7 @@ import "./DetailQuiz.scss";
 
 const Question = ({ data, currentQuestion, handleCheckAnswer }) => {
   const [isPreviewImage, setIsPreviewImage] = useState(false);
+  const { t } = useTranslation();
 
   if (_.isEmpty(data)) {
     // check xem có phải mảng rỗng không vơi thư viện Lodash
@@ -48,7 +50,7 @@ const Question = ({ data, currentQuestion, handleCheckAnswer }) => {
         )}
       </div>
       <div className="question">
-        Question {currentQuestion + 1} : {data.questionDesc}
+        {t("question.question")} {currentQuestion + 1} : {data.questionDesc}
       </div>
 
       <div className="answer">

@@ -61,26 +61,32 @@ const Header = () => {
             </NavLink>
           </Nav>
           <Nav>
+            <Language />
+
             {isAuthenticated ? (
               <>
-                <NavDropdown title="Setting" id="basic-nav-dropdown">
-                  <NavDropdown.Item>Profile </NavDropdown.Item>
+                <NavDropdown
+                  title={t("header.headerSetting")}
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item>
+                    {t("header.headerProfile")}{" "}
+                  </NavDropdown.Item>
                   <NavDropdown.Item onClick={() => handleLogout()}>
-                    Log out
+                    {t("header.headerLogout")}
                   </NavDropdown.Item>
                 </NavDropdown>
               </>
             ) : (
               <>
                 <Button outline onClick={() => handleLogin()}>
-                  Log in
+                  {t("header.headerLogin")}
                 </Button>
                 <Button primary onClick={() => handleSignup()}>
-                  Sign up
+                  {t("header.headerSignup")}
                 </Button>
               </>
             )}
-            <Language />
           </Nav>
         </Navbar.Collapse>
       </Container>

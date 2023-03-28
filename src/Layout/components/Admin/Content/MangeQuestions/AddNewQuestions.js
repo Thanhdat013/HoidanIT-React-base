@@ -220,7 +220,7 @@ const AddNewQuestions = () => {
         <label className="form-label">{t("question.questionQuiz")}</label>
         <Select
           options={listQuiz}
-          placeholder="Quiz type..."
+          placeholder={t("question.questionQuiz")}
           value={selectedQuiz}
           onChange={setSelectedQuiz}
         />
@@ -249,7 +249,7 @@ const AddNewQuestions = () => {
                             ? "form-control"
                             : "form-control is-invalid"
                         }
-                        placeholder="Add new question"
+                        placeholder={t("addQuestion.addQuestionTitle")}
                         onFocus={() => setIsValidQuestion(false)}
                       />
                       <div className="add-remove-icon">
@@ -299,7 +299,7 @@ const AddNewQuestions = () => {
                                   : "form-control col-md-10 answer-container-text is-invalid"
                               }
                               onFocus={() => setIsValidAnswer(false)}
-                              placeholder="Add new answer "
+                              placeholder={t("addQuestion.addQuestionTitle")}
                               value={answer.description}
                               onChange={(e) =>
                                 handleChangeQuestionAnswer(

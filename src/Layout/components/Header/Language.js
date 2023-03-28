@@ -14,10 +14,10 @@ const Language = () => {
         className="languages"
       >
         <NavDropdown.Item onClick={() => handleChangeLanguage("vi")}>
-          Việt Nam{" "}
+          {t("header.headerLanguageVi")}
         </NavDropdown.Item>
         <NavDropdown.Item onClick={() => handleChangeLanguage("en")}>
-          English
+          {t("header.headerLanguageEn")}
         </NavDropdown.Item>
       </NavDropdown>
     </>

@@ -9,20 +9,34 @@
     "headerBrand": "React-Bootstrap",
     "headerHome": "Trang chủ",
     "headerUsers": "Người dùng",
-    "headerAdmin": "Quản lý"
+    "headerAdmin": "Quản trị viên",
+    "headerProfile": "Hồ sơ",
+    "headerLogout": "Đăng xuất",
+    "headerLogin": "  Đăng  nhập",
+    "headerSignup": " Đăng kiý",
+    "headerLanguageVi": " Việt Nam",
+    "headerLanguageEn": " Tiếng Anh",
+    "headerSetting": " Cài đặt"
   },
   "quiz": {
-    "quizTitle1": "Bài test :",
+    "quizTitle1": "Bài test: ",
     "quizPrev": "Trước ",
     "quizNext": "Tiếp ",
     "quizFinish": "Kết thúc ",
     "quizButton": "Đến bài test ",
-    "quizNotice": "Bạn chưa có bài test nào bây giờ You don't have any quiz now... "
+    "quizNotice": "Bạn chưa có bài test nào bây giờ You don't have any quiz now... ",
+    "quizName": "Tên bài test",
+    "quizDesc": "Miêu tả",
+    "quizType": "Độ khó",
+    "quizUploadImage": "Tải ảnh lên",
+    "quizPreviewImage": "Xem trước ảnh",
+    "quizClose": "Đóng",
+    "quizSave": "Lưu"
   },
   "manageQuiz": {
     "manageQuiz": "Quản lý các bài test",
     "manageQuizAdd": "Thêm bài test mới ",
-    "manageQuizUpdate": "Cập nhật câu hởi và câu trả lời cho bài test ",
+    "manageQuizUpdate": "Cập nhật câu hỏi và câu trả lời cho bài test ",
     "manageQuizAssign": "Gán bài test"
   },
   "tableQuiz": {
@@ -43,13 +57,9 @@
   },
   "addQuiz": {
     "addQuizTitle": "Thêm bài test mới",
-    "addQuizName": "Tên",
+    "addQuizName": "Tên bài test",
     "addQuizDesc": "Miêu tả",
-    "addQuizType": "Độ khó",
-    "addQuizImage": "Tải ảnh lên",
-    "addQuizPreviewImage": "Xem trước ảnh",
-    "addQuizClose": "Đóng",
-    "addQuizSave": "Lưu"
+    "addQuizType": "Độ khó"
   },
   "assignQuiz": {
     "assignQuizType": "Chọn bài test",
@@ -57,22 +67,28 @@
     "assignQuizAssign": "Gán"
   },
   "quizQA": {
+    "quizQAType": "Chọn bài test..",
     "quizQAQuestion": "Câu hỏi",
     "quizQAAnswer": "Câu trả lời",
     "quizQAPreviewImage": "Xem trước ảnh",
     "quizQAUploadImage": "Tải ảnh lên",
     "quizQARemoveImage": "Xóa bỏ ảnh",
-    "quizQASave": "Lưu câu hỏi"
+    "quizQASave": "Lưu câu hỏi",
+    "quizQAAddQuestion": "Thêm câu hỏi mới",
+    "quizQAAddAnswer": "Thêm câu trả lời mới"
   },
   "updateQuiz": {
     "updateQuizTitle": "Cập nhật bài test",
     "updateQuizName": "Tên",
     "updateQuizDesc": "Miêu tả",
-    "updateQuizType": "Độ khó",
-    "updateQuizUploadImage": "Tải ảnh lên",
-    "updateQuizPreviewImage": "Xem trước ảnh",
-    "updateQuizClose": "ĐÓng",
-    "updateQuizSave": "Lưu"
+    "updateQuizType": "Độ khó"
+  },
+  "resultQuiz": {
+    "resultQuizAnswer": "Kết quả trả lời của bạn",
+    "resultQuizQuestion": "Tổng số câu hỏi: ",
+    "resultQuizAnswerCorrect": "Tổng số câu trả lời đúng: ",
+    "resultQuizShow": "Hiển thị câu trả lời",
+    "resultQuizCancel": "Hủy bỏ"
   },
   "user": {
     "userEmail": "Thư điện tử",
@@ -88,7 +104,7 @@
   "addUser": {
     "addUserTitle": "Thêm người dùng mới",
     "addUserClose": "Đóng",
-    "updateQuizSave": "Lưu"
+    "addUserSave": "Lưu"
   },
   "deleteUser": {
     "deleteUserConfirm": "Xác nhận xóa người dùng",
@@ -103,12 +119,14 @@
     "tableUserId": "ID",
     "tableUserName": "Tên",
     "tableUserEmail": "Thư điện tử",
-    "tableUserRole": "Vai tro",
+    "tableUserRole": "Vai trò",
     "tableUserAction": "Hành Động",
     "tableUserView": "Xem",
     "tableUserUpdate": "Cập nhật",
     "tableUserDelete": "Xóa",
-    "tableUserData": "Không có dữ liệu"
+    "tableUserData": "Không có dữ liệu",
+    "tableUserPrev": "< Trước",
+    "tableUserNext": "Tiếp >"
   },
   "updateUser": {
     "updateUserTitle": "Cập nhật người dùng",
@@ -119,6 +137,7 @@
     "viewUserTitle": "Xem chi tiết người dùng"
   },
   "question": {
+    "question": "Câu hỏi",
     "questionManage": "Quản lý câu hỏi",
     "questionQuiz": "Chọn bài test",
     "questionTitle": "Câu hỏi",
@@ -127,5 +146,49 @@
     "questionUploadImage": "Tải ảnh lên",
     "questionRemoveImage": "Xóa bỏ ảnh",
     "questionSave": "Lưu câu hỏi"
+  },
+  "addQuestion": {
+    "addQuestionTitle": "Thêm câu hỏi mới"
+  },
+  "admin": {
+    "adminProfile": "Hồ sơ",
+    "adminLogout": "Đăng xuất",
+    "adminSetting": "Cài đặt"
+  },
+  "sideBar": {
+    "sideBarTitle": "Bài test của HoiDanIt",
+    "sideBarDashboard": "Bảng điều khiển",
+    "sideBarManageUser": "Quản lý người dùng",
+    "sideBarManageQuiz": "Quản lý bài test",
+    "sideBarManageQuestion": "Quản lý câu hỏi ",
+    "sideBarViewSource": "Xem nguồn",
+    "sideBarFeature": "Tính năng"
+  },
+  "login": {
+    "loginTitle": "Bạn vẫn chưa có tài khoản?",
+    "loginName": "Hoi dan IT",
+    "loginWelcome": "Xin chào, bạn là ai",
+    "loginEmail": "Thư điện tử",
+    "loginPassword": "Mật khẩu",
+    "loginForgotPassword": "Quên mật khẩu ?",
+    "loginSubmit": "Đăng nhập vào HoiDanIt",
+    "loginBackHome": "Về trang chủ"
+  },
+  "register": {
+    "registerHeader": "Bạn có sẵn sàng để tạo một tài khoản",
+    "registerTitle": "Hoi dan IT",
+    "registerWelcome": "Bắt đầu hành trình của bạn",
+    "registerEmail": "Thư điện tử (*)",
+    "registerPassword": "Mật khẩu (*) ",
+    "registerUsername": "Tên tài khoản (*)",
+    "registerSubmit": "Tạo một tài khoản miễn phí",
+    "registerBackHome": "Về trang chủ"
+  },
+  "dashBoard": {
+    "dashBoardTitle": "Bảng phân tích số liệu",
+    "dashBoardTotalUser": "Tổng số người dùng",
+    "dashBoardTotalQuizzes": "Tổng số bài test",
+    "dashBoardTotalQuestion": "Tổng số câu hỏi",
+    "dashBoardTotalAnswer": "Tổng số câu trả lời"
   }
 }

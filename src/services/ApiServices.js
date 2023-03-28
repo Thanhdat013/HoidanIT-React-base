@@ -39,6 +39,10 @@ export const getQuizByUser = () => {
   return getAxios.get("v1/quiz-by-participant");
 };
 
+export const getDataOverView = () => {
+  return getAxios.get("v1/overview");
+};
+
 // Login + Signup
 export const postLogin = (email, password, delay) => {
   return getAxios.post("v1/login", {

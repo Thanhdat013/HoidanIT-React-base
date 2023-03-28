@@ -7,6 +7,7 @@ import {
   SidebarFooter,
   SidebarContent,
 } from "react-pro-sidebar";
+import { useTranslation } from "react-i18next";
 import { FaGem, FaGithub } from "react-icons/fa";
 import { DiReact } from "react-icons/di";
 import { MdDashboard } from "react-icons/md";
@@ -20,6 +21,7 @@ import sidebarBg from "~/assets/bg_sidebar.jpg";
 
 const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -46,7 +48,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
             }}
           >
             <DiReact size={"3em"} color={"00bfff"} />
-            Quiz test HoidanIt
+            {t("sideBar.sideBarTitle")}
           </div>
         </SidebarHeader>
 
@@ -56,7 +58,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
               icon={<MdDashboard />}
               // suffix={<span className="badge red">New</span>}
             >
-              dashboard
+              {t("sideBar.sideBarDashboard")}
               <Link to="/admin" />
             </MenuItem>
             {/* <MenuItem icon={<FaGem />}> components </MenuItem> */}
@@ -65,18 +67,18 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
             <SubMenu
               // suffix={<span className="badge yellow">3</span>}
               icon={<FaGem />}
-              title="feature"
+              title={t("sideBar.sideBarFeature")}
             >
               <MenuItem onClick={() => navigate("/admin/manage-user")}>
-                Quản lý User
+                {t("sideBar.sideBarManageUser")}
               </MenuItem>
 
               <MenuItem onClick={() => navigate("/admin/manage-quizzes")}>
-                Quản lý bài Quiz
+                {t("sideBar.sideBarManageQuiz")}
               </MenuItem>
 
               <MenuItem onClick={() => navigate("/admin/manage-questions")}>
-                Quản lý câu hỏi
+                {t("sideBar.sideBarManageQuestion")}
               </MenuItem>
             </SubMenu>
           </Menu>
@@ -103,7 +105,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                   overflow: "hidden",
                 }}
               >
-                viewSource
+                {t("sideBar.sideBarViewSource")}
               </span>
             </a>
           </div>

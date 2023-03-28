@@ -77,31 +77,31 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
       <Modal.Body>
         <form className="row g-3">
           <div className="col-md-12">
-            <label className="form-label">{t("addQuiz.addQuizName")}</label>
+            <label className="form-label">{t("quiz.quizName")}</label>
             <input
               type="text"
               className="form-control"
-              placeholder="Name quiz"
+              placeholder={t("addQuiz.addQuizName")}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="col-md-12">
-            <label className="form-label">{t("addQuiz.addQuizDesc")}</label>
+            <label className="form-label">{t("quiz.quizDesc")}</label>
             <input
               type="text"
               className="form-control"
-              placeholder="Description"
+              placeholder={t("addQuiz.addQuizDesc")}
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
             />
           </div>
 
           <div className="col-md-12">
-            <label className="form-label">{t("addQuiz.addQuizType")}</label>
+            <label className="form-label">{t("quiz.quizType")}</label>
             <Select
               options={options}
-              placeholder="Quiz type..."
+              placeholder={t("addQuiz.addQuizType")}
               defaultValue={quizType}
               onChange={setQuizType}
             />
@@ -112,7 +112,7 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
               htmlFor="labelUpload"
             >
               <FcPlus />
-              {t("addQuiz.addQuizImage")}
+              {t("quiz.quizUploadImage")}
             </label>
             <input
               type="file"
@@ -125,17 +125,17 @@ const AddNewQuiz = ({ show, setShow, fetchListQuiz }) => {
             {previewAvatar ? (
               <img src={previewAvatar} className="quiz-image" />
             ) : (
-              <span>{t("addQuiz.addQuizPreviewImage")}</span>
+              <span>{t("quiz.quizPreviewImage")}</span>
             )}
           </div>
         </form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          {t("addQuiz.addQuizClose")}
+          {t("quiz.quizClose")}
         </Button>
         <Button variant="primary" onClick={() => handleSubmitCreateQuiz()}>
-          {t("addQuiz.addQuizSave")}
+          {t("quiz.quizSave")}
         </Button>
       </Modal.Footer>
     </Modal>

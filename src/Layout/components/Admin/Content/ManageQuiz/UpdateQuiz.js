@@ -98,37 +98,31 @@ function UpdateQuiz({
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-12">
-              <label className="form-label">
-                {t("updateQuiz.updateQuizName")}
-              </label>
+              <label className="form-label">{t("quiz.quizName")}</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Name quiz"
+                placeholder={t("updateQuiz.updateQuizName")}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="col-md-12">
-              <label className="form-label">
-                {t("updateQuiz.updateQuizDesc")}
-              </label>
+              <label className="form-label">{t("quiz.quizType")}</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Description"
+                placeholder={t("updateQuiz.updateQuizDesc")}
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
               />
             </div>
 
             <div className="col-md-12">
-              <label className="form-label">
-                {t("updateQuiz.updateQuizType")}
-              </label>
+              <label className="form-label">{t("quiz.quizType")}</label>
               <Select
                 options={options}
-                placeholder="Quiz type..."
+                placeholder={t("updateQuiz.updateQuizType")}
                 defaultValue={quizType}
                 onChange={setQuizType}
               />
@@ -136,7 +130,7 @@ function UpdateQuiz({
             <div className="col-md-12">
               <label className="form-label upload-file" htmlFor="labelUpload">
                 <FcPlus />
-                {t("updateQuiz.updateQuizUploadImage")}
+                {t("quiz.quizUploadImage")}
               </label>
               <input
                 type="file"
@@ -149,17 +143,17 @@ function UpdateQuiz({
               {previewAvatar ? (
                 <img src={previewAvatar} className="quiz-image" />
               ) : (
-                <span>{t("updateQuiz.updateQuizPreviewImage")}</span>
+                <span>{t("quiz.quizPreviewImage")}</span>
               )}
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            {t("updateQuiz.updateQuizClose")}
+            {t("quiz.quizClose")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitUpdateQuiz()}>
-            {t("updateQuiz.updateQuizSave")}
+            {t("quiz.quizSave")}
           </Button>
         </Modal.Footer>
       </Modal>

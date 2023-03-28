@@ -2,24 +2,36 @@
   "homePage": {
     "homePageTitle1": "There's a better way to ask..... ",
     "homePageTitle2": "You don't want to make a boring form. And your audience won't answer one. Create a typeform instead—and make everyone happy. ",
-
     "homePageLogin": "Get started - it's free",
     "homePageLogout": " Doing Quiz Now !"
   },
-
   "header": {
     "headerBrand": "React-Bootstrap",
     "headerHome": "Home",
     "headerUsers": "Users",
-    "headerAdmin": "Admin"
+    "headerAdmin": "Admin",
+    "headerProfile": "Profile",
+    "headerLogout": "Log out",
+    "headerLogin": "  Log in",
+    "headerSignup": " Sign up",
+    "headerLanguageVi": " Việt Nam",
+    "headerLanguageEn": " English",
+    "headerSetting": " Setting"
   },
   "quiz": {
-    "quizTitle1": "Quiz :",
+    "quizTitle1": "Quiz: ",
     "quizPrev": "Prev ",
     "quizNext": "Next ",
     "quizFinish": "Finish ",
     "quizButton": "Go Quiz ",
-    "quizNotice": "You don't have any quiz now... "
+    "quizNotice": "You don't have any quiz now... ",
+    "quizName": "Name",
+    "quizDesc": "Description",
+    "quizType": "Difficult",
+    "quizUploadImage": "Upload file image",
+    "quizPreviewImage": "Preview image",
+    "quizClose": "Close",
+    "quizSave": "Save"
   },
   "manageQuiz": {
     "manageQuiz": "Manage Quizzes ",
@@ -45,13 +57,9 @@
   },
   "addQuiz": {
     "addQuizTitle": "Add New Quiz",
-    "addQuizName": "Name",
+    "addQuizName": "Name quiz",
     "addQuizDesc": "Description",
-    "addQuizType": "Difficult",
-    "addQuizImage": "Upload file image",
-    "addQuizPreviewImage": "Preview image",
-    "addQuizClose": "Close",
-    "addQuizSave": "Save"
+    "addQuizType": "Quiz type..."
   },
   "assignQuiz": {
     "assignQuizType": "Select quiz",
@@ -59,22 +67,28 @@
     "assignQuizAssign": "Assign"
   },
   "quizQA": {
+    "quizQAType": "Quiz type...",
     "quizQAQuestion": "Question",
     "quizQAAnswer": "Answers",
     "quizQAPreviewImage": "Preview image",
     "quizQAUploadImage": "Upload file image",
     "quizQARemoveImage": "Remover file image",
-    "quizQASave": "Save questions"
+    "quizQASave": "Save questions",
+    "quizQAAddQuestion": "Add new question",
+    "quizQAAddAnswer": "Add new answer "
   },
   "updateQuiz": {
     "updateQuizTitle": "Update Quiz",
-    "updateQuizName": "Name",
+    "updateQuizName": "Name quiz",
     "updateQuizDesc": "Description",
-    "updateQuizType": "Difficult",
-    "updateQuizUploadImage": "Upload file image",
-    "updateQuizPreviewImage": "Preview image",
-    "updateQuizClose": "Close",
-    "updateQuizSave": "Save"
+    "updateQuizType": "Quiz type..."
+  },
+  "resultQuiz": {
+    "resultQuizAnswer": "Your result answer",
+    "resultQuizQuestion": "Total questions: ",
+    "resultQuizAnswerCorrect": "Total correct answers: ",
+    "resultQuizShow": "Show answers",
+    "resultQuizCancel": "Cancel"
   },
   "user": {
     "userEmail": "Email",
@@ -90,7 +104,7 @@
   "addUser": {
     "addUserTitle": "Add New User",
     "addUserClose": "Close",
-    "updateQuizSave": "Save"
+    "addUserSave": "Save"
   },
   "deleteUser": {
     "deleteUserConfirm": "Confirm delete user",
@@ -110,7 +124,9 @@
     "tableUserView": "View",
     "tableUserUpdate": "Update",
     "tableUserDelete": "Delete",
-    "tableUserData": "Not found data"
+    "tableUserData": "Not found data",
+    "tableUserPrev": "< Prev",
+    "tableUserNext": "Next >"
   },
   "updateUser": {
     "updateUserTitle": "Update User",
@@ -121,6 +137,7 @@
     "viewUserTitle": "View detail User"
   },
   "question": {
+    "question": "Questions",
     "questionManage": "Manage Questions",
     "questionQuiz": "Quiz type",
     "questionTitle": "Question",
@@ -129,5 +146,49 @@
     "questionUploadImage": "Upload file image",
     "questionRemoveImage": "Remover file image",
     "questionSave": "Save questions"
+  },
+  "addQuestion": {
+    "addQuestionTitle": "Add new question"
+  },
+  "admin": {
+    "adminProfile": "Profile",
+    "adminLogout": "Log out",
+    "adminSetting": "Setting"
+  },
+  "sideBar": {
+    "sideBarTitle": "Quiz test HoiDanIt",
+    "sideBarDashboard": "Dashboard",
+    "sideBarManageUser": "Manage User",
+    "sideBarManageQuiz": "Manage Quiz",
+    "sideBarManageQuestion": "Manage Question ",
+    "sideBarViewSource": "ViewSource",
+    "sideBarFeature": "Feature"
+  },
+  "login": {
+    "loginTitle": "Don't have an account yet?",
+    "loginName": "Hoi dan IT",
+    "loginWelcome": "Hello, Who's this ?",
+    "loginEmail": "Email",
+    "loginPassword": "Password ",
+    "loginForgotPassword": "Forgot password?",
+    "loginSubmit": "Login to HoiDanIt",
+    "loginBackHome": "Go to homepage"
+  },
+  "register": {
+    "registerHeader": "Already have an account",
+    "registerTitle": "Hoi dan IT",
+    "registerWelcome": "Start your journey",
+    "registerEmail": "Email (*)",
+    "registerPassword": "Password (*) ",
+    "registerUsername": "Username (*)",
+    "registerSubmit": "Create a free account",
+    "registerBackHome": "Go to homepage"
+  },
+  "dashBoard": {
+    "dashBoardTitle": "Analytics dashBoard",
+    "dashBoardTotalUser": "Total users",
+    "dashBoardTotalQuizzes": "Total quizzes",
+    "dashBoardTotalQuestion": "Total questions",
+    "dashBoardTotalAnswer": "Total answers"
   }
 }

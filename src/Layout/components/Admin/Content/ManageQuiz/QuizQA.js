@@ -275,10 +275,10 @@ const QuizQA = () => {
   return (
     <div className="question-container">
       <div className="select-quiz">
-        <label className="form-label">Quiz type</label>
+        <label className="form-label">{t("quizQA.quizQAType")}</label>
         <Select
           options={listQuiz}
-          placeholder="Quiz type..."
+          placeholder={t("quizQA.quizQAType")}
           value={selectedQuiz}
           onChange={setSelectedQuiz}
         />
@@ -307,7 +307,7 @@ const QuizQA = () => {
                             ? "form-control"
                             : "form-control is-invalid"
                         }
-                        placeholder="Add new question"
+                        placeholder={t("quizQA.quizQAAddQuestion")}
                         onFocus={() => setIsValidQuestion(false)}
                       />
                       <div className="add-remove-icon">
@@ -357,7 +357,7 @@ const QuizQA = () => {
                                   : "form-control col-md-10 answer-container-text is-invalid"
                               }
                               onFocus={() => setIsValidAnswer(false)}
-                              placeholder="Add new answer "
+                              placeholder={t("quizQA.quizQAAddAnswer")}
                               value={answer.description}
                               onChange={(e) =>
                                 handleChangeQuestionAnswer(

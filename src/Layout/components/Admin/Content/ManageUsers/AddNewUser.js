@@ -85,7 +85,7 @@ function AddNewUser({
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Add New User
+        {t("addUser.addUserTitle")}
       </Button>
 
       <Modal
