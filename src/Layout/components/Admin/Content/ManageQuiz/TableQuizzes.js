@@ -9,7 +9,7 @@ const TableQuizzes = ({
 
   return (
     <>
-      <table className="table table-hover table-bordered">
+      <table className="table table-hover table-bordered mb-4">
         <thead>
           <tr>
             <th scope="col"> {t("tableQuiz.tableQuizId")}</th>

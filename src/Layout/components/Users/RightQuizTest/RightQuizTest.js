@@ -3,10 +3,15 @@ import { useRef } from "react";
 import CountDown from "./CountDown";
 import "./RightQuizTest.scss";
 
-const RightQuizTest = ({ dataQuiz, handleFinishQuiz, setCurrentQuestion }) => {
+const RightQuizTest = ({
+  dataQuiz,
+  handleFinishQuiz,
+  setCurrentQuestion,
+  statusCount,
+}) => {
   const refDiv = useRef([]);
 
-  const onTimeup = () => {
+  const onTimeUp = () => {
     handleFinishQuiz();
   };
 
@@ -43,7 +48,11 @@ const RightQuizTest = ({ dataQuiz, handleFinishQuiz, setCurrentQuestion }) => {
   return (
     <>
       <div className="quiz-timer">
-        <CountDown onTimeup={onTimeup} />
+        <CountDown
+          statusCount={statusCount}
+          onTimeUp={onTimeUp}
+          handleFinishQuiz={handleFinishQuiz}
+        />
       </div>
       <div className="quiz-container-wrap">
         {dataQuiz.map((item, index) => (

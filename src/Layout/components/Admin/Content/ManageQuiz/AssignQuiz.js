@@ -65,7 +65,6 @@ const AssignQuiz = () => {
       selectedQuiz.value,
       selectedUser.value
     );
-    console.log(res);
     if (res && res.EC === 0) {
       toast.success(res.EM);
     } else {

@@ -31,7 +31,8 @@
     "quizUploadImage": "Upload file image",
     "quizPreviewImage": "Preview image",
     "quizClose": "Close",
-    "quizSave": "Save"
+    "quizSave": "Save",
+    "quizDoing": "Doing quiz"
   },
   "manageQuiz": {
     "manageQuiz": "Manage Quizzes ",
@@ -126,7 +127,8 @@
     "tableUserDelete": "Delete",
     "tableUserData": "Not found data",
     "tableUserPrev": "< Prev",
-    "tableUserNext": "Next >"
+    "tableUserNext": "Next >",
+    "tableUserAvatar": "Avatar "
   },
   "updateUser": {
     "updateUserTitle": "Update User",

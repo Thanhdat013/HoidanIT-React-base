@@ -43,6 +43,10 @@ export const getDataOverView = () => {
   return getAxios.get("v1/overview");
 };
 
+export const getUserHistory = () => {
+  return getAxios.get("v1/history");
+};
+
 // Login + Signup
 export const postLogin = (email, password, delay) => {
   return getAxios.post("v1/login", {
@@ -67,6 +71,20 @@ export const postLogout = (email, refresh_token) => {
   });
 };
 
+export const postRefreshToken = (email, refresh_token) => {
+  return getAxios.post("v1/refresh-token", {
+    email,
+    refresh_token,
+  });
+};
+
+export const postChangePassword = (current_password, new_password) => {
+  return getAxios.post("v1/change-password", {
+    current_password,
+    new_password,
+  });
+};
+
 // Quiz test
 export const getDataQuiz = (id) => {
   return getAxios.get(`v1/questions-by-quiz?quizId=${id}`);
@@ -85,6 +103,13 @@ export const createNewQuiz = (description, name, difficulty, quizImage) => {
 
   return getAxios.post("v1/quiz", data);
 };
+export const postUpdateProfile = (username, userImage) => {
+  const dataUpdate = new FormData();
+  dataUpdate.append("username", username);
+  dataUpdate.append("userImage", userImage);
+  return getAxios.post("v1/profile", dataUpdate);
+};
+
 export const getAllQuiz = () => {
   return getAxios.get("v1/quiz/all");
 };

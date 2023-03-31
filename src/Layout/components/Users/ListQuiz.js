@@ -36,7 +36,6 @@ const ListQuiz = () => {
               />
               <div className="card-body">
                 <h5 className="card-title">
-                  {" "}
                   {t("quiz.quizTitle1")}
                   {index + 1}
                 </h5>

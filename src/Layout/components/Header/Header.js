@@ -14,10 +14,16 @@ import Button from "~/components/Button/Button";
 import { postLogout } from "~/services/ApiServices";
 import { doLogout } from "~/redux/action/userAction";
 import Language from "./Language";
+import UserSetting from "~/Layout/components/Users/UserSetting/UserSetting";
+import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  const handleClickProfile = () => {
+    setShow(true);
+  };
+
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -40,57 +46,61 @@ const Header = () => {
       navigate("/login");
     }
   };
-
+  //User setting
+  const [show, setShow] = useState(false);
   return (
-    <Navbar bg="light" expand="lg" className={cx("navbar")}>
-      <Container>
-        <NavLink to="/" className={cx("navbar-brand")}>
-          {t("header.headerBrand")}
-        </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <NavLink to="/" className={cx("nav-link")}>
-              {t("header.headerHome")}
-            </NavLink>
-            <NavLink to="/users" className={cx("nav-link")}>
-              {t("header.headerUsers")}
-            </NavLink>
-            <NavLink to="/admin" className={cx("nav-link")}>
-              {t("header.headerAdmin")}
-            </NavLink>
-          </Nav>
-          <Nav>
-            <Language />
+    <>
+      <Navbar bg="light" expand="lg" className={cx("navbar")}>
+        <Container>
+          <NavLink to="/" className={cx("navbar-brand")}>
+            {t("header.headerBrand")}
+          </NavLink>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <NavLink to="/" className={cx("nav-link")}>
+                {t("header.headerHome")}
+              </NavLink>
+              <NavLink to="/users" className={cx("nav-link")}>
+                {t("header.headerUsers")}
+              </NavLink>
+              <NavLink to="/admin" className={cx("nav-link")}>
+                {t("header.headerAdmin")}
+              </NavLink>
+            </Nav>
+            <Nav>
+              <Language />
 
-            {isAuthenticated ? (
-              <>
-                <NavDropdown
-                  title={t("header.headerSetting")}
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item>
-                    {t("header.headerProfile")}{" "}
-                  </NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => handleLogout()}>
-                    {t("header.headerLogout")}
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </>
-            ) : (
-              <>
-                <Button outline onClick={() => handleLogin()}>
-                  {t("header.headerLogin")}
-                </Button>
-                <Button primary onClick={() => handleSignup()}>
-                  {t("header.headerSignup")}
-                </Button>
-              </>
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+              {isAuthenticated ? (
+                <>
+                  <NavDropdown
+                    title={t("header.headerSetting")}
+                    id="basic-nav-dropdown"
+                  >
+                    <NavDropdown.Item onClick={() => handleClickProfile()}>
+                      {t("header.headerProfile")}
+                    </NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => handleLogout()}>
+                      {t("header.headerLogout")}
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
+              ) : (
+                <>
+                  <Button outline onClick={() => handleLogin()}>
+                    {t("header.headerLogin")}
+                  </Button>
+                  <Button primary onClick={() => handleSignup()}>
+                    {t("header.headerSignup")}
+                  </Button>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <UserSetting show={show} setShow={setShow} />
+    </>
   );
 };
 

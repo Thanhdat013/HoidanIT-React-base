@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const CountDown = ({ onTimeup }) => {
+const CountDown = ({ onTimeUp, statusCount }) => {
   const [count, setCount] = useState(300);
 
   function convertHMS(value) {
@@ -22,17 +22,20 @@ const CountDown = ({ onTimeup }) => {
   }
 
   useEffect(() => {
+    if (statusCount === true) {
+      const timer = setInterval(() => {
+        setCount(count - 1);
+      }, 1000);
+
+      return () => {
+        clearInterval(timer);
+      };
+    }
+
     if (count === 0) {
-      onTimeup();
+      onTimeUp();
       return;
     }
-    const timer = setInterval(() => {
-      setCount(count - 1);
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
   }, [count]);
 
   return (

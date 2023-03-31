@@ -58,11 +58,11 @@ const Admin = () => {
             </>
           </div>
         </div>
-        <PerfectScrollbar>
-          <div className="admin-main">
+        <div className="admin-main">
+          <PerfectScrollbar>
             <Outlet />
-          </div>
-        </PerfectScrollbar>
+          </PerfectScrollbar>
+        </div>
       </div>
     </div>
   );

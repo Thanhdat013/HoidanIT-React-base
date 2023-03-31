@@ -31,7 +31,8 @@
     "quizUploadImage": "Tải ảnh lên",
     "quizPreviewImage": "Xem trước ảnh",
     "quizClose": "Đóng",
-    "quizSave": "Lưu"
+    "quizSave": "Lưu",
+    "quizDoing": "Làm bài quiz"
   },
   "manageQuiz": {
     "manageQuiz": "Quản lý các bài test",
@@ -126,7 +127,8 @@
     "tableUserDelete": "Xóa",
     "tableUserData": "Không có dữ liệu",
     "tableUserPrev": "< Trước",
-    "tableUserNext": "Tiếp >"
+    "tableUserNext": "Tiếp >",
+    "tableUserAvatar": "Ảnh đại diện"
   },
   "updateUser": {
     "updateUserTitle": "Cập nhật người dùng",
