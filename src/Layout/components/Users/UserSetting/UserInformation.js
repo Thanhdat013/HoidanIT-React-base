@@ -11,10 +11,6 @@ import _ from "lodash";
 import "./UserSetting.scss";
 
 function UserInformation({ show, setShow }) {
-  // const [currentAccount, setCurrentAccount] = useState(
-  //   useSelector((state) => state.user.account)
-  // );
-
   const currentAccount = useSelector((state) => state.user.account);
 
   const handleClose = () => {

@@ -1,38 +1,75 @@
 import { useTranslation } from "react-i18next";
 
 import { getUserHistory } from "~/services/ApiServices";
-import Button from "react-bootstrap/Button";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import Form from "react-bootstrap/Form";
+
 import "./UserSetting.scss";
-import { useState } from "react";
-function UserHistory({ setShow }) {
-  const currentAccount = useSelector((state) => state.user.account);
+import { useState, useEffect } from "react";
+function UserHistory() {
   const { t } = useTranslation();
   const [dataHistory, setDataHistory] = useState([]);
-  const handleClickGetHistory = async () => {
+  useEffect(() => {
+    GetHistory();
+  }, []);
+
+  const GetHistory = async () => {
     let res = await getUserHistory();
-    console.log(res);
     if (res && res.EC === 0) {
-      setDataHistory(res.DT);
-      console.log(dataHistory);
+      // convert time
+      function formatDate(string) {
+        var options = {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          second: "numeric",
+        };
+        return new Date(string).toLocaleDateString([], options);
+      }
+
+      const newDataHistory = res.DT.data.map((item) => {
+        return {
+          id: item.id,
+          name: item.quizHistory.name,
+          totalQuestions: item.total_questions,
+          totalAnswerCorrect: item.total_correct,
+          time: formatDate(item.updatedAt),
+        };
+      });
+      if (newDataHistory && newDataHistory.length > 7) {
+        let updateDataHistory = newDataHistory.slice(-8, -1);
+
+        setDataHistory(updateDataHistory);
+      }
     }
   };
   return (
-    <Form className="row">
-      <Form.Group className="form-footer">
-        <Button className="btn btn-secondary" onClick={() => setShow(false)}>
-          Cancel
-        </Button>
-        <Button
-          className="btn btn-primary"
-          onClick={() => handleClickGetHistory()}
-        >
-          Save
-        </Button>
-      </Form.Group>
-    </Form>
+    <>
+      <table className="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Total question</th>
+            <th scope="col">Total answer correct</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dataHistory &&
+            dataHistory.length > 0 &&
+            dataHistory.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.totalQuestions}</td>
+                <td>{item.totalAnswerCorrect}</td>
+                <td>{item.time}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </>
   );
 }
 export default UserHistory;

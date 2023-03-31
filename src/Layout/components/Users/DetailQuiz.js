@@ -88,7 +88,7 @@ const DetailQuiz = () => {
       dataFinishSubmit.answers = answers;
       // Submit API
       let res = await postSubmitQuiz(dataFinishSubmit);
-      console.log(res);
+
       if (res && res.EC === 0) {
         setDataModalResult({
           countCorrect: res.DT.countCorrect,
@@ -126,7 +126,6 @@ const DetailQuiz = () => {
             }
           }
         }
-        console.log(dataQuizClone);
         setDataQuiz(dataQuizClone);
       }
     }
