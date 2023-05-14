@@ -11,14 +11,23 @@ body {
 }
 
 .app-container {
-  .header-container {
-    height: 72px;
-    .navbar {
-      z-index: 10;
-      background-color: transparent !important;
-    }
+  .app-container_video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100vw;
+    min-height: 100vh;
   }
-  .app-content {
-    height: calc(100vh - 68px);
+  .app-container_content {
+    .header-container {
+      height: 72px;
+      .navbar {
+        z-index: 10;
+        background-color: transparent !important;
+      }
+    }
+    .app-content {
+      height: calc(100vh - 68px);
+    }
   }
 }

@@ -1,24 +1,24 @@
-import classNames from "classnames/bind";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import classNames from "classnames/bind"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import VideoHomePage from "~/assets/header_video.mp4"
 
-import styles from "./HomePage.scss";
+import styles from "./HomePage.scss"
 
-import VideoHomePage from "~/assets/header_video.mp4";
-import Button from "~/components/Button/Button";
+import Button from "~/components/Button/Button"
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(styles)
 
 function HomePage() {
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
+  const navigate = useNavigate()
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <div className="homepage-container">
-      <video className={cx("video")} autoPlay loop muted>
+      <video className="app-container_video" autoPlay loop muted>
         <source src={VideoHomePage} type="video/mp4" />
       </video>
       <div className={cx("homepage-content")}>
@@ -47,7 +47,7 @@ function HomePage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage

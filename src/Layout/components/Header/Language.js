@@ -1,15 +1,18 @@
-import "./Header.scss";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { useTranslation, Trans } from "react-i18next";
+import "./Header.scss"
+
+import { Button, Row } from "react-bootstrap"
+import { useTranslation } from "react-i18next"
+
 const Language = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation()
 
   const handleChangeLanguage = (languages) => {
-    i18n.changeLanguage(languages);
-  };
+    i18n.changeLanguage(languages)
+  }
+
   return (
-    <>
-      <NavDropdown
+    <div className="languages">
+      {/* <NavDropdown
         title={i18n.language === "en" ? "English" : "Việt Nam"}
         className="languages"
       >
@@ -19,9 +22,28 @@ const Language = () => {
         <NavDropdown.Item onClick={() => handleChangeLanguage("en")}>
           {t("header.headerLanguageEn")}
         </NavDropdown.Item>
-      </NavDropdown>
-    </>
-  );
-};
+      </NavDropdown> */}
+      <Button
+        variant="outline"
+        className={
+          i18n.language === "vi"
+            ? "languages-active languages-vi"
+            : "languages-vi"
+        }
+        onClick={() => handleChangeLanguage("vi")}
+      >
+        Vn
+      </Button>
 
-export default Language;
+      <Button
+        variant="outline"
+        className={i18n.language === "en" ? "languages-active" : ""}
+        onClick={() => handleChangeLanguage("en")}
+      >
+        En
+      </Button>
+    </div>
+  )
+}
+
+export default Language

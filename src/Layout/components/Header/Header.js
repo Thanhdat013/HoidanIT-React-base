@@ -1,59 +1,63 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import classNames from "classnames/bind";
-import { useDispatch, useSelector } from "react-redux";
-import { useTranslation, Trans } from "react-i18next";
+import classNames from "classnames/bind"
+import { useTranslation } from "react-i18next"
+import { useDispatch, useSelector } from "react-redux"
+import { NavLink, useNavigate } from "react-router-dom"
 
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import NavDropdown from "react-bootstrap/NavDropdown"
 
-import styles from "./Header.scss";
+import styles from "./Header.scss"
 
-import Button from "~/components/Button/Button";
-import { postLogout } from "~/services/ApiServices";
-import { doLogout } from "~/redux/action/userAction";
-import Language from "./Language";
-import UserSetting from "~/Layout/components/Users/UserSetting/UserSetting";
-import { useState } from "react";
+import { useState } from "react"
+import Button from "~/components/Button/Button"
+import UserSetting from "~/Layout/components/Users/UserSetting/UserSetting"
+import { doLogout } from "~/redux/action/userAction"
+import { postLogout } from "~/services/ApiServices"
+import Language from "./Language"
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(styles)
 
 const Header = () => {
   const handleClickProfile = () => {
-    setShow(true);
-  };
+    setShow(true)
+  }
 
-  const navigate = useNavigate();
-  const { t } = useTranslation();
+  const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const handleLogin = () => {
-    navigate("/login");
-  };
+    navigate("/login")
+  }
   const handleSignup = () => {
-    navigate("/signup");
-  };
+    navigate("/signup")
+  }
   // Redux
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-  const account = useSelector((state) => state.user.account);
-  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
+  const account = useSelector((state) => state.user.account)
+  const dispatch = useDispatch()
   const handleLogout = async () => {
-    let res = await postLogout(account.email, account.refresh_token);
+    let res = await postLogout(account.email, account.refresh_token)
 
     if (res && res.EC === 0) {
       // clear data Redux
-      dispatch(doLogout());
-      navigate("/login");
+      dispatch(doLogout())
+      navigate("/login")
     }
-  };
+  }
   //User setting
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
   return (
     <>
       <Navbar bg="light" expand="lg" className={cx("navbar")}>
         <Container>
           <NavLink to="/" className={cx("navbar-brand")}>
-            {t("header.headerBrand")}
+            <img
+              src="https://e7.pngegg.com/pngimages/155/56/png-clipart-brain-graphics-illustration-knowledge-test-thumbnail.png"
+              alt=""
+              className={cx("navbar-brand_logo")}
+            />
           </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -69,8 +73,6 @@ const Header = () => {
               </NavLink>
             </Nav>
             <Nav>
-              <Language />
-
               {isAuthenticated ? (
                 <>
                   <NavDropdown
@@ -95,13 +97,15 @@ const Header = () => {
                   </Button>
                 </>
               )}
+
+              <Language />
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
       <UserSetting show={show} setShow={setShow} />
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

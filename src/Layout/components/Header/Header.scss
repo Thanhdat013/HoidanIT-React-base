@@ -1,3 +1,12 @@
+.navbar-brand {
+  .navbar-brand_logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
 .navbar-nav {
   .nav-link {
     &.active {
@@ -7,7 +16,21 @@
 }
 
 .languages {
-  .dropdown-toggle::after {
-    display: none !important;
+  display: flex;
+  position: relative;
+  .languages-vi {
+    &::after {
+      content: "";
+      display: block;
+      width: 2px;
+      height: 20px;
+      background-color: #ccc;
+      right: 48%;
+      top: 28%;
+      position: absolute;
+    }
+  }
+  .languages-active {
+    color: red !important;
   }
 }
